@@ -1,6 +1,6 @@
 import "./grid.css";
-import Node from "./node";
-import Graph from "../algorithm/graph";
+import Node from "../node/node";
+import Graph from "../../algorithm/graph";
 
 function Grid() {
     const numOfNodesPerSide = 15; // warning! CSS grid (grid.css) builds the square grid using this value

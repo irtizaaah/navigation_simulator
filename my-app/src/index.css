@@ -1,3 +1,25 @@
+:root{
+  --primary-color: #3f575c;
+  --secondary-color: #96a3ab;
+  --accent-color: #d74562;
+  --background-color: white;
+
+  --grid-color: ##d3d7d6;
+  --map-color: #e6ecec;
+  
+  --unvisited-node-color: #ffffff;
+  --visited-node-color: #94B3FD;
+  --parent-node-color: #76a4ff;
+  --current-node-color: #94DAFF;
+  --processed-node-color: #B983FF;
+
+  --start-node-color: ##fcbe5b;
+  --finish-node-color: #fa4b62;
+  --traffic-node-color: ##62948f;
+  --stop-node-color: #a36666;
+
+}
+
 * {    
   margin: 0;
   padding: 0;

@@ -11,6 +11,7 @@
 3. processed
 4. parent
 5. weight
+6. current
 
 ## Map
 1. editable grid (border outlined)

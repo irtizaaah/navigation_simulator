@@ -1,0 +1,9 @@
+.grid-container{
+    display: grid;
+    /* numOfNodesPerSide = 15*/
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+
+    height: 50vh;
+    width: 30vw;
+}

@@ -1,7 +1,8 @@
 class DijkstrasAlgorithm{
     constructor(graph, startVertex = 0, endVertex = graph.getNumOfTotalVertices()-1){
 
-        this.path = ""; // to print path
+        this.directions = []; // directions to the shortest path
+        this.vistedNodesInOrder = []; // list of nodes visited in order
 
         this.startVertex = startVertex; // source
         this.endVertex = endVertex; // destination
@@ -14,7 +15,7 @@ class DijkstrasAlgorithm{
         this.processed = new Array(this.numOfTotalVertices);
         // list of vertices whose neighbors are all visited
 
-        this.nearestNeighbor = this.startVertex; // alternative method
+        this.nearestNeighbor = this.startVertex; // alternative traversal method
         // the neighbor with the min distance
 
         this.parents = new Array(this.numOfTotalVertices);
@@ -24,6 +25,10 @@ class DijkstrasAlgorithm{
         // -1 is a sort of null value since disjktra can't compute negative values
 
         this._initializeDistances();
+    }
+
+    getVisitedNodesInOrder(){
+        return this.visitedNodesInOrder;
     }
 
     _initializeDistances(){ 
@@ -36,18 +41,16 @@ class DijkstrasAlgorithm{
         this.shortestDistances[this.startVertex] = 0;
         this.parents[this.startVertex] = this.NO_PARENT;
     }
-    _printPath(neighbor){
-        //this._getPath(this.parents, neighbor);
-        this.path = this.path + neighbor
-        this.path = this.path + "\n";
+    getDirections(){
+        this._navigate(this.parents, this.endVertex);
     }
 
-    _getPath(parents, destination){
+    _navigate(parents, destination){
         if (destination === this.NO_PARENT){
             return;
         }
-        this._getPath(parents, parents[destination]);
-        this.path = this.path + destination + " ";
+        this._navigate(parents, parents[destination]);
+        this.directions.push(destination);
     }
 
     _processNeighbors(vertex, neighbors){ 
@@ -73,10 +76,11 @@ class DijkstrasAlgorithm{
                     // don't look over processed vertices or vertices with longer distances
                     this.parents[neighbors[i]] = vertex;
                     this.shortestDistances[neighbors[i]] = distance; 
-                    this.nearestNeighbor = neighbors[i]; // alternative method
-                    this._printPath(neighbors[i]);
+                    this.nearestNeighbor = neighbors[i]; // alternative traversal method
                 }
             }
+
+            this.vistedNodesInOrder.push(neighbors[i]);
         }
     }
 
@@ -85,13 +89,14 @@ class DijkstrasAlgorithm{
         let vertex = this.startVertex;
 
         for(let i = this.startVertex; i < this.endVertex; i++){ // for every vertex
-            vertex = this.nearestNeighbor; 
-            // vertex = i;
+            // vertex = this.nearestNeighbor; // alternative traversal method
+            vertex = i; // alternative traversal method
             /*
                 pick either vertex = i or vertex = this.nearestNeighbor 
             */
 
             neighbors = this.graph.getNeighbors(vertex); // list of vertex's neighbors
+            this.vistedNodesInOrder.push(i);
             this._processNeighbors(vertex, neighbors);
             /* 
                 - find the shortest distance needed to get to every neighbor from the source
@@ -100,6 +105,8 @@ class DijkstrasAlgorithm{
             */
             this.processed[vertex] = true; // ith vertex has been processed
         }
+
+        return this.getDirections();
     }
 }
 

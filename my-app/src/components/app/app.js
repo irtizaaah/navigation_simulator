@@ -8,11 +8,11 @@ function App() {
   const numOfTotalNodes = numOfNodesPerSide * numOfNodesPerSide; // builds a square grid (sq. area = side * side)
   
   const graph = new Graph(numOfNodesPerSide); 
-  const path = new DijkstrasAlgorithm(graph, 0);
-  path.getShortestPath();
-  console.log(path.path);
-  console.log(path);
-  
+  const path = new DijkstrasAlgorithm(graph, 0, 224);
+  const directions = path.getShortestPath(); // returns directions to shortest path
+  const visitedNodesInOrder = path.getVisitedNodesInOrder();
+
+
 
   /* 
   - this buids a graph using the nodes

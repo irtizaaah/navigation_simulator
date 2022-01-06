@@ -9,10 +9,8 @@ function App() {
   
   const graph = new Graph(numOfNodesPerSide); 
   const path = new DijkstrasAlgorithm(graph, 0, 224);
-  const directions = path.getShortestPath(); // returns directions to shortest path
-  const visitedNodesInOrder = path.getVisitedNodesInOrder();
-
-
+  const directions = [path.getShortestPath()]; // returns array of directions to shortest path
+  const visitedNodesInOrder = [path.getVisitedNodesInOrder()]; // copy return array into this array
 
   /* 
   - this buids a graph using the nodes

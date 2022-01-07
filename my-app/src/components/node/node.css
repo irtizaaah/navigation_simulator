@@ -1,11 +1,11 @@
-.node-container{
+.node_container{
     border-style: solid;
     border-width: 0.025em;
     border-color: var(--grid-color);
     margin-top: -1px;
     margin-left: -1px;
 }
-.node{
+.node_container-node{
     background-color: var(--unvisited-node-color);
     width: 100%;
     height: 100%;
@@ -14,8 +14,11 @@
     justify-content: center;
     align-items: center;
 }
-.node:hover{
+.node_container-node:hover{
     background-color: var(--accent-color);
     width: 100%;
     height: 100%;
+}
+.visited{
+    background-color: var(--visited-node-color);
 }

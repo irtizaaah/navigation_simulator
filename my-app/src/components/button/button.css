@@ -1,0 +1,31 @@
+.button_container-button{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+
+    width: 4rem;
+    height: 2rem;
+
+    border-style: none;
+    border-radius: 7px;
+    
+}
+.button_container-button:hover{
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+
+    width: 4rem;
+    height: 2rem;
+
+    border-style: none;
+    border-radius: 7px;
+}
+.button_container-button:active{
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+
+    width: 4rem;
+    height: 2rem;
+
+    border-style: none;
+    border-radius: 7px;
+}

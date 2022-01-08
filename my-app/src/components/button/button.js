@@ -5,7 +5,7 @@ function Button(props) {
 
   const buttonRef = React.useRef(null)
 
-  setTimeout(function() {
+  setInterval(function() {
     buttonRef.current.click();
   }, 1000);
   

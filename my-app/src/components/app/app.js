@@ -20,7 +20,7 @@ function App() {
     - the default weight for every edge is 1
     - every node is numbered in order
   */
-  const path = new DijkstrasAlgorithm(graph, 0, 224);
+  const path = new DijkstrasAlgorithm(graph, 50, 100);
   const directions = [path.getShortestPath()]; // returns array of directions to shortest path
   const visitedNodesInOrder = [...path.getVisitedNodesInOrder()]; // copy return array into this array
 
@@ -29,8 +29,8 @@ function App() {
       <Grid 
         numOfTotalNodes = {numOfTotalNodes}
         numOfVisitedNodes = {numOfVisitedNodes}
-        visitedNodesInOrder = {[...visitedNodesInOrder]}
-        visitedNodesSoFar = {[...visitedNodesSoFar]}
+        visitedNodesInOrder = {visitedNodesInOrder}
+        visitedNodesSoFar = {visitedNodesSoFar}
       />
       <Button 
         name = "Navigate"

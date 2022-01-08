@@ -1,15 +1,15 @@
 import "./grid.css";
-import Node from "../node/node";
+import Square from "../square/square";
 
 function Grid(props) {
     const grid = [];
 
-    for(let node = 0; node < props.numOfTotalNodes; node++){
-        if(props.visitedNodesSoFar.includes(node)){
-            grid.push(<Node name = {node} visited = {true}/>);
+    for(let square = 0; square < props.numOfTotalNodes; square++){
+        if(props.visitedNodesSoFar.includes(square)){
+            grid.push(<Square name = {square} visited = {true}/>);
         }
         else{
-            grid.push(<Node name = {node} visited = {false}/>);
+            grid.push(<Square name = {square} visited = {false}/>);
         }
     }
 

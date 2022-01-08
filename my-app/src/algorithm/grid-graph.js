@@ -1,5 +1,3 @@
-import Grid from "../components/grid/grid";
-
 class GridGraph{ // builds an undirected graph of nodes and edges representing a sqaure grid 
     constructor(numOfNodesPerSide){
         this.numOfNodesPerSide = numOfNodesPerSide // builds a square grid (sq. area = side * side)

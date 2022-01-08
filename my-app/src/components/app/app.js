@@ -20,7 +20,7 @@ function App() {
     - the default weight for every edge is 1
     - every node is numbered in order
   */
-  const path = new DijkstrasAlgorithm(graph, 0, 30);
+  const path = new DijkstrasAlgorithm(graph, 0, 224);
   const directions = [path.getShortestPath()]; // returns array of directions to shortest path
   const visitedNodesInOrder = [...path.getVisitedNodesInOrder()]; // copy return array into this array
 

@@ -1,9 +1,7 @@
 import "./grid.css";
 import Square from "../square/square";
-import {useState} from 'react';
 
 function Grid(props) {
-    const [editWalls,setEditWalls] = useState(false);
     const grid = [];
     let nodeVisited = "false";
     let nodeWall = "";
@@ -27,8 +25,8 @@ function Grid(props) {
             squareIndex = {squareIndex} 
             nodeVisited = {nodeVisited} 
             nodeWall = {nodeWall} 
-            editWalls = {editWalls}
-            setEditWalls = {setEditWalls}
+            editWalls = {props.editWalls}
+            setEditWalls = {props.setEditWalls}
             wallNodes = {props.wallNodes}
             setWallNodes = {props.setWallNodes}
         />);

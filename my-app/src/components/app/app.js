@@ -21,7 +21,13 @@ function App() {
 
   const [numOfVisitedNodes, setNumOfVisitedNodes] = useState(0);
   const [visitedNodesSoFar, setVisitedNodesSoFar] = useState({});
+
   const [wallNodes, setWallNodes] = useState({});
+  const [startNode, setStartNode] = useState(0);
+  const [endNode, setEndNode] = useState(numOfTotalNodes);
+
+  const [editWalls,setEditWalls] = useState(false);
+
 
   const path = new DijkstrasAlgorithm(graph, 0, 25);
   const directions = [...path.getShortestPath()]; // returns array of directions to shortest path
@@ -75,9 +81,21 @@ function App() {
 
         wallNodes = {wallNodes}
         setWallNodes = {setWallNodes} 
+        editWalls = {editWalls}
+        setEditWalls = {setEditWalls}
+
+
       />
       <Button 
         name = "Navigate"
+        handleClick = {navigateHandleClick}
+      />
+      <Button 
+        name = "Point"
+        handleClick = {navigateHandleClick}
+      />
+      <Button 
+        name = "Wall"
         handleClick = {navigateHandleClick}
       />
     </div>

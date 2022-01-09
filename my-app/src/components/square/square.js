@@ -2,13 +2,30 @@ import "./square.css";
 
 function Square(props) {
 
-    function handleMouseEnter(){
+    function handleMouseOver(){
         if(props.editWalls === true){
+            console.log(props.squareIndex)
             props.setWallNodes(() => {
                 props.wallNodes[props.squareIndex] = true;
                 return props.wallNodes;
             });
         }
+    }
+
+    function handleMouseClick(){
+        props.setEditWalls(() => { 
+            if(props.editWalls === true){
+                return false;
+            }
+            else if(props.editWalls === false){
+                return true;
+            }
+        });
+
+        props.setWallNodes(() => {
+            props.wallNodes[props.squareIndex] = true;
+            return props.wallNodes;
+        });
     }
 
     return(
@@ -19,30 +36,8 @@ function Square(props) {
                     ${props.nodeVisited} 
                     ${props.nodeWall}`
                     }
-
-                onMouseEnter = {() => {
-                        handleMouseEnter();
-                    }
-                }
-                
-                onClick = {() => {
-                    props.setEditWalls(() => {   
-                        if(props.editWalls === true){
-                            return false;
-                        }
-                        else if(props.editWalls === false){
-                            return true;
-                        }
-
-                        console.log(props.editWalls);
-                    });
-
-                    props.setWallNodes(() => {
-                        props.wallNodes[props.squareIndex] = true;
-                        return props.wallNodes;
-                    });
-
-                }}
+                onMouseOver = {() => {handleMouseOver();}}
+                onClick = {() => {handleMouseClick();}}
             >
             {props.squareIndex}
              </div>

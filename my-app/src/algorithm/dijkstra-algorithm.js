@@ -54,18 +54,25 @@ class DijkstrasAlgorithm{
 
             this.unvisitedNodes.sort(function(nodeA, nodeB){return nodeA.distance - nodeB.distance}); // sort distances from source to current node ascendingly 
             if (this.unvisitedNodes[0].getDistance() === Infinity){ // if node has no neighbors
+                currentNode = this._updateCurrentNodeAndLists(currentNode);
                 return this._getDirections();
             }
             if (this.unvisitedNodes[0].getIndex() === this.endNodeIndex){ // the end node now has the shortest distance from the start node
+                currentNode = this._updateCurrentNodeAndLists(currentNode);
                 return this._getDirections();
             }
-            currentNode = this.unvisitedNodes.shift(); // remove node with shortest distance and make it the current node
-            this.visitedNodes.push(currentNode); // push current node to visited nodes
+            currentNode = this._updateCurrentNodeAndLists(currentNode);
             this._updateVisitedNodesInOrder(currentNode.getIndex()); // record node having been visited
             this._relaxNeighbors(currentNode); // update current's neighbors' shortest distances
         }
 
         return this._getDirections();
+    }
+
+    _updateCurrentNodeAndLists(currentNode){
+        currentNode = this.unvisitedNodes.shift(); // remove node with shortest distance and make it the current node
+        this.visitedNodes.push(currentNode); // push current node to visited nodes
+        return currentNode;
     }
 
     _relaxNeighbors(currentNode){
@@ -115,6 +122,14 @@ class DijkstrasAlgorithm{
         }
     }
 
+    _getNodeFromVisitedList(nodeIndex){
+        for(let i = 0; i < this.visitedNodes.length; i++){
+            if(this.visitedNodes[i].getIndex() === nodeIndex){
+                return this.visitedNodes[i];
+            }
+        }
+    }
+
     _updateVisitedNodesInOrder(node){
         this.visitedNodesInOrder.push(node);
     }
@@ -124,16 +139,17 @@ class DijkstrasAlgorithm{
     }
 
     _getDirections(){
-        this._backtrack(this.endVertex);
+        this._backtrack(this.endNodeIndex);
         return this.directions;
     }
 
-    _backtrack(destinationNode){
-        if (destinationNode === this.NO_PARENT){
+    _backtrack(nodeIndex){
+        const node = this._getNodeFromVisitedList(nodeIndex);
+        if (node.getPrevious() === this.NO_PARENT_NODE){
             return;
         }
-        this.directions.push(destinationNode);
-        this._backtrack(this.previousVertices[destinationNode]);
+        this.directions.push(nodeIndex);
+        this._backtrack(node.getPrevious());
     }
 }
 

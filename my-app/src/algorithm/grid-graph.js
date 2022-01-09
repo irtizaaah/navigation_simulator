@@ -40,28 +40,37 @@ class GridGraph{ // builds an undirected graph of nodes and edges representing a
     getWeight(node,neighbor){
         return this.adjacencyMatrix[node][neighbor];
     }
-
+    
     getAllNeighbors(node){
 
         const neighbors = [];
 
         if(this._rightNodeExists(node) === true){ 
-            neighbors.push(node+1);
+            if(this.getWeight(node, node+1) >= 1){ 
+                neighbors.push(node+1);
+            }
         }
 
         if(this._leftNodeExists(node) === true){ 
-            neighbors.push(node-1);
+            if(this.getWeight(node, node-1) >= 1){ 
+                neighbors.push(node-1);
+            }
         }
 
         if(this._topNodeExists(node) === true){ 
-            neighbors.push(node+this.numOfNodesPerSide);
+            if(this.getWeight(node, node+this.numOfNodesPerSide) >= 1){ 
+                neighbors.push(node+this.numOfNodesPerSide);
+            }
         }
 
         if(this._bottomNodeExists(node) === true){ 
-            neighbors.push(node-this.numOfNodesPerSide);
+            if(this.getWeight(node, node-this.numOfNodesPerSide) >= 1){ 
+                neighbors.push(node-this.numOfNodesPerSide);
+            }
         }
 
         return neighbors;
+
     }
 
     addNode(node, weight = 1){ // connect node to surrounding nodes with given weight

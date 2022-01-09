@@ -19,7 +19,7 @@
     width: 100%;
     height: 100%;
 }
-.visited{
+.node-visited{
     background-color: var(--visited-node-color);
     animation-name: visitedAnimation;
     animation-duration: 1.5s;
@@ -51,4 +51,8 @@
       transform: scale(1);
       background-color: rgba(0, 190, 218, 0.75);
     }
+  }
+
+  .node-wall {
+    background-color: rgb(12, 53, 71);
   }

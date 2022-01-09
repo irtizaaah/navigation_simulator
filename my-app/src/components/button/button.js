@@ -2,26 +2,9 @@ import "./button.css";
 import React from 'react'
 
 function Button(props) {
-
-  const buttonRef = React.useRef(null)
-
-  setInterval(function() {
-    buttonRef.current.click();
-  }, 1000);
-  
   return (
     <div className = "button_container">
-      <button ref={buttonRef}
-        className = "button_container-button" 
-        onClick = {() => {
-          props.setNumOfVisitedNodes(props.numOfVisitedNodes + 1)
-          props.setVisitedNodesSoFar(() => {
-              for(let i = 0; i < props.numOfVisitedNodes; i++ ){
-                props.visitedNodesSoFar[i] = props.visitedNodesInOrder[i];
-              }
-              return [...props.visitedNodesSoFar];
-          });
-          }}>
+      <button className = "button_container-button" onClick = {() => {props.handleClick()}}>
         {props.name}
       </button>
     </div>

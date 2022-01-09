@@ -50,14 +50,22 @@ class DijkstrasAlgorithm{
     getShortestPath(){
         let currentNode = this.unvisitedNodes[this.startNodeIndex];
 
-        while(this.unvisitedNodes.length !== 0 && this.endNodeIndex !== currentNode.getIndex()){ 
+        while(this.unvisitedNodes.length !== 0){ 
 
             this.unvisitedNodes.sort(function(nodeA, nodeB){return nodeA.distance - nodeB.distance}); // sort distances from source to current node ascendingly 
+            if (this.unvisitedNodes[0].getDistance() === Infinity){ // if node has no neighbors
+                return this._getDirections();
+            }
+            if (this.unvisitedNodes[0].getIndex() === this.endNodeIndex){ // the end node now has the shortest distance from the start node
+                return this._getDirections();
+            }
             currentNode = this.unvisitedNodes.shift(); // remove node with shortest distance and make it the current node
             this.visitedNodes.push(currentNode); // push current node to visited nodes
             this._updateVisitedNodesInOrder(currentNode.getIndex()); // record node having been visited
             this._relaxNeighbors(currentNode); // update current's neighbors' shortest distances
         }
+
+        return this._getDirections();
     }
 
     _relaxNeighbors(currentNode){

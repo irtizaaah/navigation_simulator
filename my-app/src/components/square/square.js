@@ -1,43 +1,35 @@
 import "./square.css";
 
 function Square(props) {
-
+    // HANDLE MOUSE EVENTS
     function handleMouseOver(){
         if(props.editWalls === true){
-            console.log(props.squareIndex)
-            props.setWallNodes(() => {
-                props.wallNodes[props.squareIndex] = true;
-                return props.wallNodes;
+            props.setBlockedNodes(() => {
+                props.blockedNodes[props.squareIndex] = true;
+                return props.blockedNodes;
             });
         }
     }
 
     function handleMouseClick(){
-        props.setEditWalls(() => { 
-            if(props.editWalls === true){
-                return false;
-            }
-            else if(props.editWalls === false){
-                return true;
-            }
-        });
+        props.setEditWalls(() => {return props.editWalls === true ? false : true});
 
-        props.setWallNodes(() => {
-            props.wallNodes[props.squareIndex] = true;
-            return props.wallNodes;
+        props.setBlockedNodes(() => {
+            props.blockedNodes[props.squareIndex] = true;
+            return props.blockedNodes;
         });
     }
 
     return(
-        <div className = "square_container">
+        <div className = "square_container-outlined">
             <div 
                 className = {
                     `square_container-node 
-                    ${props.nodeVisited} 
-                    ${props.nodeWall}`
+                    ${props.visitedNodeClassName} 
+                    ${props.blockedNodeClassName}`
                     }
                 onMouseOver = {() => {handleMouseOver();}}
-                onClick = {() => {handleMouseClick();}}
+                onClick = {() => {handleMouseClick()}}
             >
             {props.squareIndex}
              </div>

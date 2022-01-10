@@ -2,40 +2,28 @@ import "./grid.css";
 import Square from "../square/square";
 
 function Grid(props) {
-    const grid = [];
-    let nodeVisited = "false";
-    let nodeWall = "";
+    let grid = [];
+    let visitedNodeClassName = "";
+    let blockedNodeClassName = "";
 
-    for(let squareIndex = 0; squareIndex < props.numOfTotalNodes; squareIndex++){
-        if(squareIndex in props.visitedNodesSoFar){
-            nodeVisited = "node-visited";
-        }
-        else{
-            nodeVisited = "";
-        }
+    for(let squareIndex = 0; squareIndex < props.NUM_OF_TOTAL_NODES; squareIndex++){
+        visitedNodeClassName = squareIndex in props.visitedNodesSoFar ? "node-visited" : "";
+        blockedNodeClassName = squareIndex in props.blockedNodes ? "node-blocked" : "";
 
-        if(squareIndex in props.wallNodes){
-            nodeWall = "node-wall";
-        }
-        else{
-            nodeWall = "";
-        }
-
-        grid.push(<Square 
-            squareIndex = {squareIndex} 
-            nodeVisited = {nodeVisited} 
-            nodeWall = {nodeWall} 
+        grid.push(<Square
+            key = {squareIndex} 
+            squareIndex = {squareIndex}
+            visitedNodeClassName = {visitedNodeClassName} 
+            blockedNodeClassName = {blockedNodeClassName} 
             editWalls = {props.editWalls}
             setEditWalls = {props.setEditWalls}
-            wallNodes = {props.wallNodes}
-            setWallNodes = {props.setWallNodes}
+            blockedNodes = {props.blockedNodes}
+            setBlockedNodes = {props.setBlockedNodes}
         />);
     }
 
     return(
-        <div 
-            className = "grid_container"
-        >
+        <div className = "grid_container">
             {grid}
         </div>
     );

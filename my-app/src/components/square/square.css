@@ -1,9 +1,15 @@
-.square_container{
+.square_container-outlined{
     border-style: solid;
     border-width: 0.025em;
-    border-color: var(--grid-color);
+    border-color: rgba(0, 190, 218, 0.75);
     margin-top: -1px;
     margin-left: -1px;
+}
+.square_container-not_outlined{
+  border-width: 0.025em;
+  border-color: transparent;
+  margin-top: -1px;
+  margin-left: -1px;
 }
 .square_container-node{
     background-color: var(--unvisited-node-color);
@@ -53,6 +59,6 @@
     }
   }
 
-  .node-wall {
+  .node-blocked {
     background-color: rgb(12, 53, 71);
   }

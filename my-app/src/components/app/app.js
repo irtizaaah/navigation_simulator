@@ -1,102 +1,52 @@
 import "./app.css";
-import Grid from "../grid/grid";
 import GridGraph from "../../algorithm/grid-graph";
 import DijkstrasAlgorithm from "../../algorithm/dijkstra-algorithm";
-import Button from "../button/button";
-import {useState} from 'react'
-import {useEffect} from 'react'
-import React from "react";
+import Grid from "../grid/grid";
+import Menu from "../menu/menu";
+import {useState} from 'react';
 
 function App() {
+  // GRID UI
+  const NUM_OF_NODES_PER_SIDE = 20; // warning! CSS grid (grid.css) builds the square grid using this value
+  const NUM_OF_TOTAL_NODES = NUM_OF_NODES_PER_SIDE * NUM_OF_NODES_PER_SIDE; // builds a n x n grid of squares
 
-  const numOfNodesPerSide = 15; // warning! CSS grid (grid.css) builds the square grid using this value
-  const numOfTotalNodes = numOfNodesPerSide * numOfNodesPerSide; // builds a square grid (sq. area = side * side)
-  const graph = new GridGraph(numOfNodesPerSide); 
-    /* 
-    - this buids a graph using the nodes
-    - every adjacent node has a edge connecting them
-    - the default weight for every edge is 1
-    - every node is numbered in order
-  */
-
-  const [numOfVisitedNodes, setNumOfVisitedNodes] = useState(0);
-  const [visitedNodesSoFar, setVisitedNodesSoFar] = useState({});
-
-  const [wallNodes, setWallNodes] = useState({});
+  const [visitedNodesSoFar, setVisitedNodesSoFar] = useState({}); // all the nodes visited in order by the dijkstra's alagorithm
+  const [numOfVisitedNodes, setNumOfVisitedNodes] = useState(0); // tracks how much of the visitedNodesSoFar list is traversed after each iteration 
+  const [blockedNodes, setBlockedNodes] = useState({});
   const [startNode, setStartNode] = useState(0);
-  const [endNode, setEndNode] = useState(numOfTotalNodes);
-
+  const [endNode, setEndNode] = useState(NUM_OF_TOTAL_NODES);
   const [editWalls,setEditWalls] = useState(false);
+  const [visualize, setVisualize] = useState(false);
 
-
-  const path = new DijkstrasAlgorithm(graph, 0, 25);
-  const directions = [...path.getShortestPath()]; // returns array of directions to shortest path
-  const visitedNodesInOrder = [...path.getVisitedNodesInOrder()]; // copy return array into this array
-
-  // const [numOfVisitedNodes, setNumOfVisitedNodes] = useState(0);
-  // const [visitedNodesSoFar, setVisitedNodesSoFar] = useState({});
-  // const [visitedNodesInOrder, setVisitedNodesInOrder] = useState([]);
-  // const [directions, setDirections] = useState([]);
-  // const [path, setPath] = useState(new DijkstrasAlgorithm(graph, 20, 1))
-  // const [wallNodes, setWallNodes] = useState({});
-
-  // setDirections([...path.getShortestPath()]); // returns array of directions to shortest path
-  // setVisitedNodesInOrder([...path.getVisitedNodesInOrder()]); // copy return array into this array
-
-  // useEffect(() => {
-  //   setPath(new DijkstrasAlgorithm(graph, 20, 1));
-  //   setDirections([...path.getShortestPath()]); // returns array of directions to shortest path
-  //   setVisitedNodesInOrder([...path.getVisitedNodesInOrder()]); // copy return array into this array
-  // }, [wallNodes, path, graph]);
-
-  // for(let nodeIndex = 0; nodeIndex < numOfTotalNodes; nodeIndex++){
-  //   for(nodeIndex in wallNodes){
-  //     graph.changeWeight(nodeIndex, 0);
-  //   }
-  // }
-
-  const updateGrid = () => {
-    setNumOfVisitedNodes(numOfVisitedNodes + 1); 
-
-    setVisitedNodesSoFar(() => {
-      for(let i = 0; i < numOfVisitedNodes; i++){
-          visitedNodesSoFar[visitedNodesInOrder[i]] = true;
-        }
-        return visitedNodesSoFar;
-    });
-  }
-
-  function navigateHandleClick(){
-      setInterval(updateGrid(), 1000);
-    }
-
+  // GRID GRAPH
+  const GRID_GRAPH = new GridGraph(NUM_OF_NODES_PER_SIDE); // internally forms a graph with nodes representing a grid (weight between every node is 1)
+  const PATH = new DijkstrasAlgorithm(GRID_GRAPH, 0, 25); // compute dijkstra's algorithm
+  const SHORTEST_PATH = [...PATH.getShortestPath()]; // copy return array of shortest path
+  const VISITED_NODES = [...PATH.getVisitedNodesInOrder()]; // copy return array of all visited nodes in order
 
   return (
     <div className = "app_container">
       <Grid 
-        numOfTotalNodes = {numOfTotalNodes}
+        NUM_OF_TOTAL_NODES = {NUM_OF_TOTAL_NODES}
+        VISITED_NODES = {VISITED_NODES}
+
         numOfVisitedNodes = {numOfVisitedNodes}
-        visitedNodesInOrder = {visitedNodesInOrder}
         visitedNodesSoFar = {visitedNodesSoFar}
 
-        wallNodes = {wallNodes}
-        setWallNodes = {setWallNodes} 
+        blockedNodes = {blockedNodes}
+        setBlockedNodes = {setBlockedNodes} 
+
         editWalls = {editWalls}
         setEditWalls = {setEditWalls}
-
-
       />
-      <Button 
-        name = "Navigate"
-        handleClick = {navigateHandleClick}
-      />
-      <Button 
-        name = "Point"
-        handleClick = {navigateHandleClick}
-      />
-      <Button 
-        name = "Wall"
-        handleClick = {navigateHandleClick}
+      <Menu
+        VISITED_NODES = {VISITED_NODES}
+        numOfVisitedNodes = {numOfVisitedNodes}
+        setNumOfVisitedNodes = {setNumOfVisitedNodes}
+        visitedNodesSoFar = {visitedNodesSoFar}
+        setVisitedNodesSoFar = {setVisitedNodesSoFar}
+        visualize = {visualize}
+        setVisualize = {setVisualize}
       />
     </div>
   );

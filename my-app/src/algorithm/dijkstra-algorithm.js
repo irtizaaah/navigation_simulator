@@ -28,6 +28,8 @@ class DijkstrasAlgorithm{
             - stores node objects (contains an index, it's current shortest distance from start node, all it's neighbor nodes, it's previous node)
             - sorted from shortest to longest distance from source
         */
+
+        this._solveAlgorithm(); // visits nodes using dijkstra's algorithm and computes shortest path
     }
     
     _initializeUnvisitedNodes(){
@@ -47,7 +49,7 @@ class DijkstrasAlgorithm{
         }
     }
 
-    getShortestPath(){
+    _solveAlgorithm(){
         let currentNode = this.unvisitedNodes[this.startNodeIndex];
 
         while(this.unvisitedNodes.length !== 0){ 
@@ -65,8 +67,6 @@ class DijkstrasAlgorithm{
             this._updateVisitedNodesInOrder(currentNode.getIndex()); // record node having been visited
             this._relaxNeighbors(currentNode); // update current's neighbors' shortest distances
         }
-
-        return this._getDirections();
     }
 
     _updateCurrentNodeAndLists(currentNode){
@@ -134,10 +134,6 @@ class DijkstrasAlgorithm{
         this.visitedNodesInOrder.push(node);
     }
 
-    getVisitedNodesInOrder(){
-        return this.visitedNodesInOrder;
-    }
-
     _getDirections(){
         this._backtrack(this.endNodeIndex);
         return this.directions;
@@ -150,6 +146,14 @@ class DijkstrasAlgorithm{
         }
         this.directions.push(nodeIndex);
         this._backtrack(node.getPrevious());
+    }
+
+    getVisitedNodesInOrder(){
+        return this.visitedNodesInOrder;
+    }
+    
+    getShortestPath(){
+        return this._getDirections();
     }
 }
 

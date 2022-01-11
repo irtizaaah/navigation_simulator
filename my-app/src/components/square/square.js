@@ -23,11 +23,10 @@ function Square(props) {
     return(
         <div className = "square_container-outlined">
             <div 
-                className = {
-                    `square_container-node 
-                    ${props.visitedNodeClassName} 
-                    ${props.blockedNodeClassName}`
-                    }
+                className = {`
+                square_container-node 
+                    ${props.NodeClassName}
+                    `}
                 onMouseOver = {() => {handleMouseOver();}}
                 onClick = {() => {handleMouseClick()}}
             >

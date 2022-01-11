@@ -7,12 +7,17 @@ function Menu(props){
         <SubMenu
             name = "Maps"
             VISITED_NODES = {props.VISITED_NODES}
-            numOfVisitedNodes = {props.numOfVisitedNodes}
-            setNumOfVisitedNodes = {props.setNumOfVisitedNodes}
+            numOfVisitedNodesSoFar = {props.numOfVisitedNodesSoFar}
+            setNumOfVisitedNodesSoFar = {props.setNumOfVisitedNodesSoFar}
             visitedNodesSoFar = {props.visitedNodesSoFar}
             setVisitedNodesSoFar = {props.setVisitedNodesSoFar}
-            visualize = {props.visualize}
-            setVisualize = {props.setVisualize}
+
+
+            SHORTEST_PATH = {props.SHORTEST_PATH}
+            numOfShortestPathNodesSoFar = {props.numOfShortestPathNodesSoFar}
+            setNumOfShortestPathNodesSoFar = {props.setNumOfShortestPathNodesSoFar}
+            shortestPathNodesSoFar = {props.shortestPathNodesSoFar}
+            setShortestPathNodesSoFar = {props.setShortestPathNodesSoFar}
         />
     </div>
   );

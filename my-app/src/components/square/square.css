@@ -105,3 +105,6 @@
   .node-end {
     background-color: red;
   }
+  .node-weighted{
+    background-color: orange;
+  }

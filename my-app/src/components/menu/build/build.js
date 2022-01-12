@@ -8,7 +8,19 @@ function Build(props){
         <h1>{props.name}</h1>
         <Button 
             name = "Block"
-            handleClick = {() => {props.setEditBlockedNodes(props.editBlockedNodes ? false : true); console.log("edit block on")}}
+            handleClick = {() => {
+              props.setEditBlockedNodes(props.editBlockedNodes ? false : true);
+              console.log("edit block on")
+            }}
+        />
+        <Button 
+            name = "Weight"
+            handleClick = {() => {
+              props.setEditWeightedNodes(true);
+              props.setEditBlockedNodes(false); 
+              console.log("edit weight on")
+            }
+          }
         />
       </div>
     );

@@ -10,7 +10,7 @@ function SubMenu(props){
 
     const TIME_PER_ITERATION = 100;
     useInterval(animateVisitedNodes, visualizeVisitedNodes ? TIME_PER_ITERATION:null);
-    useInterval(animateShortPathNodes, visualizeShortestPath ? TIME_PER_ITERATION:null);
+    useInterval(animateShortestPathNodes, visualizeShortestPath ? TIME_PER_ITERATION:null);
 
 
     useEffect(()=>{
@@ -32,16 +32,18 @@ function SubMenu(props){
             for(let i = 0; i < props.numOfVisitedNodesSoFar; i++){
                 props.visitedNodesSoFar[props.VISITED_NODES[i]] = true;
             }
+            console.log("visited: " + props.numOfVisitedNodesSoFar);
             return props.visitedNodesSoFar;
         });
     };
 
-    function animateShortPathNodes(){
+    function animateShortestPathNodes(){
         props.setNumOfShortestPathNodesSoFar(props.numOfShortestPathNodesSoFar + 1);
         props.setShortestPathNodesSoFar(() => {
             for(let i = 0; i < props.numOfShortestPathNodesSoFar; i++){
                 props.shortestPathNodesSoFar[props.SHORTEST_PATH[i]] = true;
             }
+            console.log("shortest path: " + props.numOfVisitedNodesSoFar);
             return props.shortestPathNodesSoFar;
         });
     };

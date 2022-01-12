@@ -17,23 +17,30 @@ function App() {
   const [numOfShortestPathNodesSoFar, setNumOfShortestPathNodesSoFar] = useState(0); // tracks how much of the shortestPathNodesSoFar list is traversed after each iteration 
 
   const [blockedNodes, setBlockedNodes] = useState({});
+  const [weightedNodes, setWeightedNodes] = useState({});
   const [startNode, setStartNode] = useState(0);
   const [endNode, setEndNode] = useState(NUM_OF_TOTAL_NODES-1);
 
   const [editBlockedNodes,setEditBlockedNodes] = useState(false);
+  const [editWeightedNodes, setEditWeightedNodes] = useState(false);
   const [editStartNode, setEditStartNode] = useState(false);
   const [editEndNode, setEditEndNode] = useState(false);
+  const [editContinuousBlockedNodes, setEditContinuousBlockedNodes] = useState(false);
+  
+
 
   // GRID GRAPH
   const [gridGraph, setGridGraph] = useState(new GridGraph(NUM_OF_NODES_PER_SIDE)); // internally forms a graph with nodes representing a grid (weight between every node is 1)
   const [path, setPath] = useState(new DijkstrasAlgorithm(gridGraph, startNode, endNode)); // compute dijkstra's algorithm
-  const shortestPath = [...path.getShortestPath()]; // copy return array of shortest path
-  const visitedNodes = [...path.getVisitedNodesInOrder()]; // copy return array of all visited nodes in order
+  const SHORTEST_PATH = [...path.getShortestPath()]; // copy return array of shortest path
+  const VISITED_NODES = [...path.getVisitedNodesInOrder()]; // copy return array of all visited nodes in order
   useEffect(() => {
+    let p = new DijkstrasAlgorithm(gridGraph, startNode, endNode);
+
     setPath(()=>{
       return new DijkstrasAlgorithm(gridGraph, startNode, endNode);
     })
-  }, [startNode, endNode, blockedNodes])
+  }, [startNode, endNode, blockedNodes, weightedNodes])
   //const SHORTEST_PATH = [...path.getShortestPath()]; // copy return array of shortest path
   //const VISITED_NODES = [...path.getVisitedNodesInOrder()]; // copy return array of all visited nodes in order
 
@@ -45,14 +52,14 @@ function App() {
         gridGraph = {gridGraph}
         setGridGraph = {setGridGraph}
 
-        VISITED_NODES = {visitedNodes}
+        VISITED_NODES = {VISITED_NODES}
         NUM_OF_TOTAL_NODES = {NUM_OF_TOTAL_NODES}
         NUM_OF_NODES_PER_SIDE = {NUM_OF_NODES_PER_SIDE}
 
         numOfVisitedNodesSoFar = {numOfVisitedNodesSoFar}
         visitedNodesSoFar = {visitedNodesSoFar}
 
-        SHORTEST_PATH = {shortestPath}
+        SHORTEST_PATH = {SHORTEST_PATH}
 
         numOfShortestPathNodesSoFar = {numOfShortestPathNodesSoFar}
         shortestPathNodesSoFar = {shortestPathNodesSoFar}
@@ -67,21 +74,28 @@ function App() {
         setEditStartNode = {setEditStartNode}
         editEndNode = {editEndNode}
         setEditEndNode = {setEditEndNode}
+        editContinuousBlockedNodes = {editContinuousBlockedNodes}
+        setEditContinuousBlockedNodes = {setEditContinuousBlockedNodes}
 
         startNode = {startNode}
         setStartNode = {setStartNode}
         endNode = {endNode}
         setEndNode = {setEndNode}
+
+        weightedNodes = {weightedNodes}
+        setWeightedNodes = {setWeightedNodes}
+        editWeightedNodes = {editWeightedNodes}
+        setEditWeightedNodes = {setEditWeightedNodes}
       />
       <Menu
         // DRIVE
-        VISITED_NODES = {visitedNodes}
+        VISITED_NODES = {VISITED_NODES}
         numOfVisitedNodesSoFar = {numOfVisitedNodesSoFar}
         setNumOfVisitedNodesSoFar = {setNumOfVisitedNodesSoFar}
         visitedNodesSoFar = {visitedNodesSoFar}
         setVisitedNodesSoFar = {setVisitedNodesSoFar}
 
-        SHORTEST_PATH = {shortestPath}
+        SHORTEST_PATH = {SHORTEST_PATH}
         numOfShortestPathNodesSoFar = {numOfShortestPathNodesSoFar}
         setNumOfShortestPathNodesSoFar = {setNumOfShortestPathNodesSoFar}
         shortestPathNodesSoFar = {shortestPathNodesSoFar}
@@ -96,6 +110,8 @@ function App() {
         // Build
         editBlockedNodes = {editBlockedNodes}
         setEditBlockedNodes = {setEditBlockedNodes}
+        editWeightedNodes = {editWeightedNodes}
+        setEditWeightedNodes = {setEditWeightedNodes}
       />
     </div>
   );

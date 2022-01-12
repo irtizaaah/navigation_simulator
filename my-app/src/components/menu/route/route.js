@@ -10,7 +10,8 @@ function Route(props){
             name = "Start"
             handleClick = {() => {
               props.setEditStartNode(true);
-              props.setEditBlockedNodes(false); 
+              props.setEditBlockedNodes(false);
+              props.setEditEndNode(false);
               console.log("edit start on")
             }
           }
@@ -19,7 +20,8 @@ function Route(props){
             name = "End"
             handleClick = {() => {
               props.setEditEndNode(true);
-              props.setEditBlockedNodes(false); 
+              props.setEditBlockedNodes(false);
+              props.setEditStartNode(false);
               console.log("edit end on")
             }
           }

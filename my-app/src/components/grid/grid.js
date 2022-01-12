@@ -3,14 +3,18 @@ import Square from "../square/square";
 import {useState} from "react"
 
 function Grid(props) {
-    const [click, setClick] = useState(false);
-
     let grid = [];
     let NodeClassName = "";
 
     for(let squareIndex = 0; squareIndex < props.NUM_OF_TOTAL_NODES; squareIndex++){
         if(squareIndex in props.blockedNodes){
             NodeClassName = "node-blocked";
+        }
+        else if(squareIndex === props.startNode){
+            NodeClassName = "node-start";
+        }
+        else if(squareIndex === props.endNode){
+            NodeClassName = "node-end";
         }
         else if(squareIndex in props.visitedNodesSoFar){
             if(squareIndex in props.shortestPathNodesSoFar && props.numOfVisitedNodesSoFar === props.VISITED_NODES.length){
@@ -21,11 +25,8 @@ function Grid(props) {
                 NodeClassName = "node-visited";
             }
         }
-        else if(squareIndex === props.startNode){
-            NodeClassName = "node-start";
-        }
-        else if(squareIndex === props.endNode){
-            NodeClassName = "node-end";
+        else if(squareIndex in props.weightedNodes){
+            NodeClassName = "node-weighted";
         }
         else{
             NodeClassName = "";
@@ -56,8 +57,14 @@ function Grid(props) {
             gridGraph = {props.gridGraph}
             setGridGraph = {props.setGridGraph}
 
-            click = {click}
-            setClick = {setClick}
+            
+            editContinuousBlockedNodes = {props.editContinuousBlockedNodes}
+            setEditContinuousBlockedNodes = {props.setEditContinuousBlockedNodes}
+
+            weightedNodes = {props.weightedNodes}
+            setWeightedNodes = {props.setWeightedNodes}
+            editWeightedNodes = {props.editWeightedNodes}
+            setEditWeightedNodes = {props.setEditWeightedNodes}
         />);
     }
 

@@ -135,7 +135,6 @@ class DijkstrasAlgorithm{
     }
 
     _getDirections(){
-        this.directions.push(this.startNodeIndex);
         this._backtrack(this.endNodeIndex);
         return this.directions;
     }

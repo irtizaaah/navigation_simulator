@@ -1,11 +1,10 @@
 import "./square.css";
-import {useState} from "react"
 
 function Square(props) {
 
     // HANDLE MOUSE EVENTS
     function handleMouseOver(){
-        if(props.editBlockedNodes === true && props.click === true){
+        if(props.editBlockedNodes === true && props.editContinuousBlockedNodes === true){
             props.setBlockedNodes(() => {
                 console.log("cliked on block node");
                 let newBlockedNodes = {...props.blockedNodes};
@@ -21,7 +20,6 @@ function Square(props) {
     }
 
     function handleMouseClick(){
-        props.setClick(props.click ? false : true);
         if(props.editStartNode === true){
             props.setStartNode(props.squareIndex);
             console.log("cliked on start node")
@@ -32,7 +30,22 @@ function Square(props) {
             console.log("cliked on end node")
             props.setEditEndNode(false);
         }
+        else if(props.editWeightedNodes === true){
+            props.setWeightedNodes(() => {
+                console.log("cliked on weighted node");
+                let newWeightedNodes = {...props.weightedNodes}; 
+                newWeightedNodes[props.squareIndex] = true;
+                return newWeightedNodes;
+            });
+            props.setGridGraph(()=>{
+                console.log("grid weight changed to 1000");
+                props.gridGraph.changeWeight(props.squareIndex, 3);
+                return props.gridGraph;
+            })
+            props.setEditWeightedNodes(false);
+        }
         else if(props.editBlockedNodes === true){
+            props.setEditContinuousBlockedNodes(props.editContinuousBlockedNodes ? false : true);
             props.setBlockedNodes(() => {
                 console.log("cliked on block node");
                 let newBlockedNodes = {...props.blockedNodes}; 

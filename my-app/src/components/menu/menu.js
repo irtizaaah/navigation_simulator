@@ -30,12 +30,15 @@ function Menu(props){
             setEditEndNode = {props.setEditEndNode}
             editBlockedNodes = {props.editBlockedNodes}
             setEditBlockedNodes = {props.setEditBlockedNodes}
+
         />
         
         <Build
             name = "Build"
             editBlockedNodes = {props.editBlockedNodes}
             setEditBlockedNodes = {props.setEditBlockedNodes}
+            editWeightedNodes = {props.editWeightedNodes}
+            setEditWeightedNodes = {props.setEditWeightedNodes}
         />
     </div>
   );

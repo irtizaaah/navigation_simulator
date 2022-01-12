@@ -10,7 +10,16 @@ function Build(props){
             name = "Block"
             handleClick = {() => {
               props.setEditBlockedNodes(props.editBlockedNodes ? false : true);
+              props.setRemoveNodes(false);
               console.log("edit block on")
+            }}
+        />
+        <Button 
+            name = "Remove"
+            handleClick = {() => {
+              props.setRemoveNodes(props.removeNodes ? false : true);
+              props.setEditBlockedNodes(false); 
+              console.log("remove nodes on")
             }}
         />
         <Button 
@@ -18,6 +27,7 @@ function Build(props){
             handleClick = {() => {
               props.setEditWeightedNodes(true);
               props.setEditBlockedNodes(false); 
+              props.setRemoveNodes(false);
               console.log("edit weight on")
             }
           }

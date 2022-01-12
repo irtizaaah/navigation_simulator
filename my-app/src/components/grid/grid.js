@@ -57,6 +57,8 @@ function Grid(props) {
             gridGraph = {props.gridGraph}
             setGridGraph = {props.setGridGraph}
 
+            setRemoveNodes = {props.setRemoveNodes}
+            removeNodes = {props.removeNodes}
             
             editContinuousBlockedNodes = {props.editContinuousBlockedNodes}
             setEditContinuousBlockedNodes = {props.setEditContinuousBlockedNodes}
@@ -65,6 +67,13 @@ function Grid(props) {
             setWeightedNodes = {props.setWeightedNodes}
             editWeightedNodes = {props.editWeightedNodes}
             setEditWeightedNodes = {props.setEditWeightedNodes}
+
+
+            removedNodes = {props.removedNodes}
+            setRemovedNodes = {props.setRemovedNodes}
+
+            removeContinuousNodes = {props.removeContinuousNodes}
+            setRemoveContinuousNodes = {props.setRemoveContinuousNodes}
         />);
     }
 

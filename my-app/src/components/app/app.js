@@ -20,12 +20,18 @@ function App() {
   const [weightedNodes, setWeightedNodes] = useState({});
   const [startNode, setStartNode] = useState(0);
   const [endNode, setEndNode] = useState(NUM_OF_TOTAL_NODES-1);
+  const [removedNodes, setRemovedNodes] = useState({})
 
   const [editBlockedNodes,setEditBlockedNodes] = useState(false);
   const [editWeightedNodes, setEditWeightedNodes] = useState(false);
   const [editStartNode, setEditStartNode] = useState(false);
   const [editEndNode, setEditEndNode] = useState(false);
   const [editContinuousBlockedNodes, setEditContinuousBlockedNodes] = useState(false);
+  const [removeContinuousNodes, setRemoveContinuousNodes] = useState(false);
+  const [removeNodes, setRemoveNodes] = useState(false);
+
+  const [visualizeVisitedNodes, setVisualizeVisitedNodes] = useState(false);
+  const [visualizeShortestPath, setVisualizeShortestPath] = useState(false);
   
 
 
@@ -35,12 +41,10 @@ function App() {
   const SHORTEST_PATH = [...path.getShortestPath()]; // copy return array of shortest path
   const VISITED_NODES = [...path.getVisitedNodesInOrder()]; // copy return array of all visited nodes in order
   useEffect(() => {
-    let p = new DijkstrasAlgorithm(gridGraph, startNode, endNode);
-
     setPath(()=>{
       return new DijkstrasAlgorithm(gridGraph, startNode, endNode);
     })
-  }, [startNode, endNode, blockedNodes, weightedNodes])
+  }, [startNode, endNode, blockedNodes, weightedNodes, removedNodes])
   //const SHORTEST_PATH = [...path.getShortestPath()]; // copy return array of shortest path
   //const VISITED_NODES = [...path.getVisitedNodesInOrder()]; // copy return array of all visited nodes in order
 
@@ -86,6 +90,14 @@ function App() {
         setWeightedNodes = {setWeightedNodes}
         editWeightedNodes = {editWeightedNodes}
         setEditWeightedNodes = {setEditWeightedNodes}
+
+        setRemoveNodes = {setRemoveNodes}
+        removeNodes = {removeNodes}
+        removedNodes = {removedNodes}
+        setRemovedNodes = {setRemovedNodes}
+
+        removeContinuousNodes = {removeContinuousNodes}
+        setRemoveContinuousNodes = {setRemoveContinuousNodes}
       />
       <Menu
         // DRIVE
@@ -101,6 +113,11 @@ function App() {
         shortestPathNodesSoFar = {shortestPathNodesSoFar}
         setShortestPathNodesSoFar = {setShortestPathNodesSoFar}
 
+        visualizeVisitedNodes = {visualizeVisitedNodes}
+        setVisualizeVisitedNodes = {setVisualizeVisitedNodes}
+        visualizeShortestPath = {visualizeShortestPath}
+        setVisualizeShortestPath = {setVisualizeShortestPath}
+
         // ROUTE
         editStartNode = {editStartNode}
         setEditStartNode = {setEditStartNode}
@@ -112,6 +129,7 @@ function App() {
         setEditBlockedNodes = {setEditBlockedNodes}
         editWeightedNodes = {editWeightedNodes}
         setEditWeightedNodes = {setEditWeightedNodes}
+        setRemoveNodes = {setRemoveNodes}
       />
     </div>
   );

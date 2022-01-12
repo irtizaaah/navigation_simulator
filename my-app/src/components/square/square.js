@@ -17,6 +17,25 @@ function Square(props) {
                 return props.gridGraph;
             })
         }
+        if(props.removeNodes === true && props.removeContinuousNodes === true){
+            if(props.blockedNodes[props.squareIndex]){
+                delete props.blockedNodes[props.squareIndex];
+            }
+            if(props.weightedNodes[props.squareIndex]){
+                delete props.weightedNodes[props.squareIndex];
+            }
+            props.setRemovedNodes(() => {
+                let newRemovedNodes = {...props.removedNodes}; 
+                newRemovedNodes[props.squareIndex] = true;
+                return newRemovedNodes;
+            });
+            props.setGridGraph(()=>{
+                console.log("grid weight reset");
+                props.gridGraph.changeWeight(props.squareIndex, 1);
+                return props.gridGraph;
+            })
+            console.log("removed node")
+        }
     }
 
     function handleMouseClick(){
@@ -29,6 +48,26 @@ function Square(props) {
             props.setEndNode(props.squareIndex);
             console.log("cliked on end node")
             props.setEditEndNode(false);
+        }
+        else if(props.removeNodes === true){
+            props.setRemoveContinuousNodes(props.removeContinuousNodes ? false : true);
+            if(props.blockedNodes[props.squareIndex]){
+                delete props.blockedNodes[props.squareIndex];
+            }
+            if(props.weightedNodes[props.squareIndex]){
+                delete props.weightedNodes[props.squareIndex];
+            }
+            props.setRemovedNodes(() => {
+                let newRemovedNodes = {...props.removedNodes}; 
+                newRemovedNodes[props.squareIndex] = true;
+                return newRemovedNodes;
+            });
+            props.setGridGraph(()=>{
+                console.log("grid weight reset");
+                props.gridGraph.changeWeight(props.squareIndex, 1);
+                return props.gridGraph;
+            })
+            console.log("removed node")
         }
         else if(props.editWeightedNodes === true){
             props.setWeightedNodes(() => {

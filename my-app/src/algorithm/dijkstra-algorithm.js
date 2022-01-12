@@ -141,7 +141,10 @@ class DijkstrasAlgorithm{
 
     _backtrack(nodeIndex){
         const node = this._getNodeFromVisitedList(nodeIndex);
-        if (node.getPrevious() === this.NO_PARENT_NODE){
+        if(typeof node === 'undefined'){
+            return;
+        }
+        if(node.getPrevious() === this.NO_PARENT_NODE){
             return;
         }
         this.directions.push(nodeIndex);

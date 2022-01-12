@@ -20,6 +20,11 @@ function Menu(props){
             setNumOfShortestPathNodesSoFar = {props.setNumOfShortestPathNodesSoFar}
             shortestPathNodesSoFar = {props.shortestPathNodesSoFar}
             setShortestPathNodesSoFar = {props.setShortestPathNodesSoFar}
+
+            visualizeVisitedNodes = {props.visualizeVisitedNodes}
+            setVisualizeVisitedNodes = {props.setVisualizeVisitedNodes}
+            visualizeShortestPath = {props.visualizeShortestPath}
+            setVisualizeShortestPath = {props.setVisualizeShortestPath}
         />
 
         <Route
@@ -30,7 +35,7 @@ function Menu(props){
             setEditEndNode = {props.setEditEndNode}
             editBlockedNodes = {props.editBlockedNodes}
             setEditBlockedNodes = {props.setEditBlockedNodes}
-
+            setRemoveNodes = {props.setRemoveNodes}
         />
         
         <Build
@@ -39,6 +44,7 @@ function Menu(props){
             setEditBlockedNodes = {props.setEditBlockedNodes}
             editWeightedNodes = {props.editWeightedNodes}
             setEditWeightedNodes = {props.setEditWeightedNodes}
+            setRemoveNodes = {props.setRemoveNodes}
         />
     </div>
   );

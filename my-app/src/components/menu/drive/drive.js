@@ -1,30 +1,27 @@
 import "./drive.css";
 import Button from "../button/button";
 import useInterval from "./use-interval";
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 
 function SubMenu(props){
 
-    const [visualizeVisitedNodes, setVisualizeVisitedNodes] = useState(false);
-    const [visualizeShortestPath, setVisualizeShortestPath] = useState(false);
-
     const TIME_PER_ITERATION = 100;
-    useInterval(animateVisitedNodes, visualizeVisitedNodes ? TIME_PER_ITERATION:null);
-    useInterval(animateShortestPathNodes, visualizeShortestPath ? TIME_PER_ITERATION:null);
+    useInterval(animateVisitedNodes, props.visualizeVisitedNodes ? TIME_PER_ITERATION:null);
+    useInterval(animateShortestPathNodes, props.visualizeShortestPath ? TIME_PER_ITERATION:null);
 
 
     useEffect(()=>{
         if(props.numOfVisitedNodesSoFar === props.VISITED_NODES.length){
-            setVisualizeVisitedNodes(false);
-            setVisualizeShortestPath(true);
+            props.setVisualizeVisitedNodes(false);
+            props.setVisualizeShortestPath(true);
         }
-    },[visualizeVisitedNodes, props.visitedNodesSoFar, props.VISITED_NODES])
+    },[props.visualizeVisitedNodes, props.visitedNodesSoFar, props.VISITED_NODES])
 
     useEffect(()=>{
         if(props.numOfShortestPathNodesSoFar === props.SHORTEST_PATH.length){
-            setVisualizeShortestPath(false);
+            props.setVisualizeShortestPath(false);
         }
-    },[visualizeShortestPath, props.shortestPathNodesSoFar, props.SHORTEST_PATH])
+    },[props.visualizeShortestPath, props.shortestPathNodesSoFar, props.SHORTEST_PATH])
 
     function animateVisitedNodes(){
         props.setNumOfVisitedNodesSoFar(props.numOfVisitedNodesSoFar + 1);
@@ -53,7 +50,7 @@ function SubMenu(props){
         <h1>{props.name}</h1>
         <Button 
             name = "Drive"
-            handleClick = {() => {setVisualizeVisitedNodes(true)}}
+            handleClick = {() => {props.setVisualizeVisitedNodes(true)}}
         />
     </div>
   );

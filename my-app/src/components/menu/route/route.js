@@ -12,6 +12,7 @@ function Route(props){
               props.setEditStartNode(true);
               props.setEditBlockedNodes(false);
               props.setEditEndNode(false);
+              props.setRemoveNodes(false);
               console.log("edit start on")
             }
           }
@@ -22,6 +23,7 @@ function Route(props){
               props.setEditEndNode(true);
               props.setEditBlockedNodes(false);
               props.setEditStartNode(false);
+              props.setRemoveNodes(false);
               console.log("edit end on")
             }
           }

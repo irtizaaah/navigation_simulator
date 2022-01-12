@@ -3,7 +3,7 @@ import GridGraph from "../../algorithm/grid-graph";
 import DijkstrasAlgorithm from "../../algorithm/dijkstra-algorithm";
 import Grid from "../grid/grid";
 import Menu from "../menu/menu";
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 function App() {
   // GRID UI
@@ -26,9 +26,17 @@ function App() {
 
   // GRID GRAPH
   const [gridGraph, setGridGraph] = useState(new GridGraph(NUM_OF_NODES_PER_SIDE)); // internally forms a graph with nodes representing a grid (weight between every node is 1)
-  const PATH = new DijkstrasAlgorithm(gridGraph, startNode, endNode); // compute dijkstra's algorithm
-  const SHORTEST_PATH = [...PATH.getShortestPath()]; // copy return array of shortest path
-  const VISITED_NODES = [...PATH.getVisitedNodesInOrder()]; // copy return array of all visited nodes in order
+  const [path, setPath] = useState(new DijkstrasAlgorithm(gridGraph, startNode, endNode)); // compute dijkstra's algorithm
+  const shortestPath = [...path.getShortestPath()]; // copy return array of shortest path
+  const visitedNodes = [...path.getVisitedNodesInOrder()]; // copy return array of all visited nodes in order
+  useEffect(() => {
+    setPath(()=>{
+      return new DijkstrasAlgorithm(gridGraph, startNode, endNode);
+    })
+  }, [startNode, endNode, blockedNodes])
+  //const SHORTEST_PATH = [...path.getShortestPath()]; // copy return array of shortest path
+  //const VISITED_NODES = [...path.getVisitedNodesInOrder()]; // copy return array of all visited nodes in order
+
 
   return (
     <div className = "app_container">
@@ -37,13 +45,14 @@ function App() {
         gridGraph = {gridGraph}
         setGridGraph = {setGridGraph}
 
-        VISITED_NODES = {VISITED_NODES}
+        VISITED_NODES = {visitedNodes}
         NUM_OF_TOTAL_NODES = {NUM_OF_TOTAL_NODES}
+        NUM_OF_NODES_PER_SIDE = {NUM_OF_NODES_PER_SIDE}
 
         numOfVisitedNodesSoFar = {numOfVisitedNodesSoFar}
         visitedNodesSoFar = {visitedNodesSoFar}
 
-        SHORTEST_PATH = {SHORTEST_PATH}
+        SHORTEST_PATH = {shortestPath}
 
         numOfShortestPathNodesSoFar = {numOfShortestPathNodesSoFar}
         shortestPathNodesSoFar = {shortestPathNodesSoFar}
@@ -66,13 +75,13 @@ function App() {
       />
       <Menu
         // DRIVE
-        VISITED_NODES = {VISITED_NODES}
+        VISITED_NODES = {visitedNodes}
         numOfVisitedNodesSoFar = {numOfVisitedNodesSoFar}
         setNumOfVisitedNodesSoFar = {setNumOfVisitedNodesSoFar}
         visitedNodesSoFar = {visitedNodesSoFar}
         setVisitedNodesSoFar = {setVisitedNodesSoFar}
 
-        SHORTEST_PATH = {SHORTEST_PATH}
+        SHORTEST_PATH = {shortestPath}
         numOfShortestPathNodesSoFar = {numOfShortestPathNodesSoFar}
         setNumOfShortestPathNodesSoFar = {setNumOfShortestPathNodesSoFar}
         shortestPathNodesSoFar = {shortestPathNodesSoFar}

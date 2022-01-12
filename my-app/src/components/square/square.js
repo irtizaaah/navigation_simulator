@@ -1,18 +1,27 @@
-import GridGraph from "../../algorithm/grid-graph";
 import "./square.css";
+import {useState} from "react"
 
 function Square(props) {
+
     // HANDLE MOUSE EVENTS
     function handleMouseOver(){
-        if(props.editWalls === true){
+        if(props.editBlockedNodes === true && props.click === true){
             props.setBlockedNodes(() => {
-                props.blockedNodes[props.squareIndex] = true;
-                return props.blockedNodes;
+                console.log("cliked on block node");
+                let newBlockedNodes = {...props.blockedNodes};
+                newBlockedNodes[props.squareIndex] = true;
+                return newBlockedNodes;
             });
+            props.setGridGraph(()=>{
+                console.log("grid weight changed");
+                props.gridGraph.changeWeight(props.squareIndex, 0);
+                return props.gridGraph;
+            })
         }
     }
 
     function handleMouseClick(){
+        props.setClick(props.click ? false : true);
         if(props.editStartNode === true){
             props.setStartNode(props.squareIndex);
             console.log("cliked on start node")
@@ -25,14 +34,16 @@ function Square(props) {
         }
         else if(props.editBlockedNodes === true){
             props.setBlockedNodes(() => {
-                props.blockedNodes[props.squareIndex] = true;
-                props.setGridGraph(()=>{
-                    props.gridGraph.changeWeight(props.squareIndex, 0);
-                    return props.gridGraph;
-                })
-                return props.blockedNodes;
+                console.log("cliked on block node");
+                let newBlockedNodes = {...props.blockedNodes}; 
+                newBlockedNodes[props.squareIndex] = true;
+                return newBlockedNodes;
             });
-            console.log("cliked on block node");
+            props.setGridGraph(()=>{
+                console.log("grid weight changed");
+                props.gridGraph.changeWeight(props.squareIndex, 0);
+                return props.gridGraph;
+            })
         }
     }
 
@@ -44,8 +55,8 @@ function Square(props) {
                     ${props.NodeClassName}
                     `}
                 onClick = {() => {handleMouseClick()}}
+                onMouseOver = {() => {handleMouseOver();}}
             >
-            {props.squareIndex}
              </div>
         </div>
     );

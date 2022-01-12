@@ -8,11 +8,21 @@ function Route(props){
         <h1>{props.name}</h1>
         <Button 
             name = "Start"
-            handleClick = {() => {props.setEditStartNode(true); console.log("edit start on")}}
+            handleClick = {() => {
+              props.setEditStartNode(true);
+              props.setEditBlockedNodes(false); 
+              console.log("edit start on")
+            }
+          }
         />
         <Button 
             name = "End"
-            handleClick = {() => {props.setEditEndNode(true); console.log("edit end on")}}
+            handleClick = {() => {
+              props.setEditEndNode(true);
+              props.setEditBlockedNodes(false); 
+              console.log("edit end on")
+            }
+          }
         />
       </div>
     );

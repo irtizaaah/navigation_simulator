@@ -28,6 +28,8 @@ function Menu(props){
             setEditStartNode = {props.setEditStartNode}
             editEndNode = {props.editEndNode}
             setEditEndNode = {props.setEditEndNode}
+            editBlockedNodes = {props.editBlockedNodes}
+            setEditBlockedNodes = {props.setEditBlockedNodes}
         />
         
         <Build

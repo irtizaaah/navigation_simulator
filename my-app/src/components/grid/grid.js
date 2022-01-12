@@ -1,7 +1,10 @@
 import "./grid.css";
 import Square from "../square/square";
+import {useState} from "react"
 
 function Grid(props) {
+    const [click, setClick] = useState(false);
+
     let grid = [];
     let NodeClassName = "";
 
@@ -29,6 +32,7 @@ function Grid(props) {
         }
 
         grid.push(<Square
+            NUM_OF_NODES_PER_SIDE = {props.NUM_OF_NODES_PER_SIDE}
             key = {squareIndex} 
             squareIndex = {squareIndex}
             NodeClassName = {NodeClassName}
@@ -51,6 +55,9 @@ function Grid(props) {
 
             gridGraph = {props.gridGraph}
             setGridGraph = {props.setGridGraph}
+
+            click = {click}
+            setClick = {setClick}
         />);
     }
 

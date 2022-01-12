@@ -12,7 +12,7 @@ function Route(props){
         />
         <Button 
             name = "End"
-            handleClick = {() => {props.setEditEndNode(true); console.log("edit start on")}}
+            handleClick = {() => {props.setEditEndNode(true); console.log("edit end on")}}
         />
       </div>
     );

@@ -1,3 +1,4 @@
+import GridGraph from "../../algorithm/grid-graph";
 import "./square.css";
 
 function Square(props) {
@@ -22,13 +23,16 @@ function Square(props) {
             console.log("cliked on end node")
             props.setEditEndNode(false);
         }
-        else{
-            props.setEditWalls(() => {return props.editWalls === true ? false : true});
-    
+        else if(props.editBlockedNodes === true){
             props.setBlockedNodes(() => {
                 props.blockedNodes[props.squareIndex] = true;
+                props.setGridGraph(()=>{
+                    props.gridGraph.changeWeight(props.squareIndex, 0);
+                    return props.gridGraph;
+                })
                 return props.blockedNodes;
             });
+            console.log("cliked on block node");
         }
     }
 
@@ -39,7 +43,6 @@ function Square(props) {
                 square_container-node 
                     ${props.NodeClassName}
                     `}
-                onMouseOver = {() => {handleMouseOver();}}
                 onClick = {() => {handleMouseClick()}}
             >
             {props.squareIndex}
@@ -47,6 +50,8 @@ function Square(props) {
         </div>
     );
 }
+
+// onMouseOver = {() => {handleMouseOver();}}
 
 
 export default Square;

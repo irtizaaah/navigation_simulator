@@ -1,6 +1,7 @@
 import "./menu.css";
 import Drive from "./drive/drive";
 import Route from "./route/route";
+import Build from "./build/build";
 
 function Menu(props){
   return (
@@ -27,6 +28,12 @@ function Menu(props){
             setEditStartNode = {props.setEditStartNode}
             editEndNode = {props.editEndNode}
             setEditEndNode = {props.setEditEndNode}
+        />
+        
+        <Build
+            name = "Build"
+            editBlockedNodes = {props.editBlockedNodes}
+            setEditBlockedNodes = {props.setEditBlockedNodes}
         />
     </div>
   );

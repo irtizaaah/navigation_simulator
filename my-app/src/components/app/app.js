@@ -20,13 +20,13 @@ function App() {
   const [startNode, setStartNode] = useState(0);
   const [endNode, setEndNode] = useState(NUM_OF_TOTAL_NODES-1);
 
-  const [editWalls,setEditWalls] = useState(false);
+  const [editBlockedNodes,setEditBlockedNodes] = useState(false);
   const [editStartNode, setEditStartNode] = useState(false);
   const [editEndNode, setEditEndNode] = useState(false);
 
   // GRID GRAPH
-  const GRID_GRAPH = new GridGraph(NUM_OF_NODES_PER_SIDE); // internally forms a graph with nodes representing a grid (weight between every node is 1)
-  const PATH = new DijkstrasAlgorithm(GRID_GRAPH, startNode, endNode); // compute dijkstra's algorithm
+  const [gridGraph, setGridGraph] = useState(new GridGraph(NUM_OF_NODES_PER_SIDE)); // internally forms a graph with nodes representing a grid (weight between every node is 1)
+  const PATH = new DijkstrasAlgorithm(gridGraph, startNode, endNode); // compute dijkstra's algorithm
   const SHORTEST_PATH = [...PATH.getShortestPath()]; // copy return array of shortest path
   const VISITED_NODES = [...PATH.getVisitedNodesInOrder()]; // copy return array of all visited nodes in order
 
@@ -34,10 +34,11 @@ function App() {
     <div className = "app_container">
       <Grid 
 
-        VISITED_NODES = {VISITED_NODES}
+        gridGraph = {gridGraph}
+        setGridGraph = {setGridGraph}
 
-        NUM_OF_TOTAL_NODES = {NUM_OF_TOTAL_NODES}
         VISITED_NODES = {VISITED_NODES}
+        NUM_OF_TOTAL_NODES = {NUM_OF_TOTAL_NODES}
 
         numOfVisitedNodesSoFar = {numOfVisitedNodesSoFar}
         visitedNodesSoFar = {visitedNodesSoFar}
@@ -50,8 +51,8 @@ function App() {
         blockedNodes = {blockedNodes}
         setBlockedNodes = {setBlockedNodes} 
 
-        editWalls = {editWalls}
-        setEditWalls = {setEditWalls}
+        editBlockedNodes = {editBlockedNodes}
+        setEditBlockedNodes = {setEditBlockedNodes}
 
         editStartNode = {editStartNode}
         setEditStartNode = {setEditStartNode}
@@ -82,6 +83,10 @@ function App() {
         setEditStartNode = {setEditStartNode}
         editEndNode = {editEndNode}
         setEditEndNode = {setEditEndNode}
+
+        // Build
+        editBlockedNodes = {editBlockedNodes}
+        setEditBlockedNodes = {setEditBlockedNodes}
       />
     </div>
   );

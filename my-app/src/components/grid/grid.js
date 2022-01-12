@@ -9,6 +9,12 @@ function Grid(props) {
         if(squareIndex in props.blockedNodes){
             NodeClassName = "node-blocked";
         }
+        if(squareIndex === props.startNode){
+            NodeClassName = "node-start";
+        }
+        else if(squareIndex === props.endNode){
+            NodeClassName = "node-end";
+        }
         else if(squareIndex in props.visitedNodesSoFar){
             if(squareIndex in props.shortestPathNodesSoFar && props.numOfVisitedNodesSoFar === props.VISITED_NODES.length){
                 // checks if nodes exist in shortest path nodes list after all the visited nodes have been iterated over

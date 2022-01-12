@@ -97,6 +97,11 @@
   .node-blocked {
     background-color: rgb(12, 53, 71);
   }
+
   .node-start {
     background-color: green;
+  }
+
+  .node-end {
+    background-color: red;
   }

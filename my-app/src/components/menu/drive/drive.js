@@ -1,4 +1,4 @@
-import "./sub-menu.css";
+import "./drive.css";
 import Button from "../button/button";
 import useInterval from "./use-interval";
 import React, {useState, useEffect} from 'react';
@@ -34,8 +34,6 @@ function SubMenu(props){
             }
             return props.visitedNodesSoFar;
         });
-        
-        console.log("visited: " + props.numOfVisitedNodesSoFar);
     };
 
     function animateShortPathNodes(){
@@ -46,15 +44,13 @@ function SubMenu(props){
             }
             return props.shortestPathNodesSoFar;
         });
-        
-        console.log("shortest path: " + props.numOfShortestPathNodesSoFar);
     };
 
   return (
     <div className = "sub_menu_container">
         <h1>{props.name}</h1>
         <Button 
-            name = "Navigate"
+            name = "Drive"
             handleClick = {() => {setVisualizeVisitedNodes(true)}}
         />
     </div>

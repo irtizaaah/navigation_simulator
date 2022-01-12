@@ -12,12 +12,24 @@ function Square(props) {
     }
 
     function handleMouseClick(){
-        props.setEditWalls(() => {return props.editWalls === true ? false : true});
-
-        props.setBlockedNodes(() => {
-            props.blockedNodes[props.squareIndex] = true;
-            return props.blockedNodes;
-        });
+        if(props.editStartNode === true){
+            props.setStartNode(props.squareIndex);
+            console.log("cliked on start node")
+            props.setEditStartNode(false);
+        }
+        else if(props.editEndNode === true){
+            props.setEndNode(props.squareIndex);
+            console.log("cliked on end node")
+            props.setEditEndNode(false);
+        }
+        else{
+            props.setEditWalls(() => {return props.editWalls === true ? false : true});
+    
+            props.setBlockedNodes(() => {
+                props.blockedNodes[props.squareIndex] = true;
+                return props.blockedNodes;
+            });
+        }
     }
 
     return(

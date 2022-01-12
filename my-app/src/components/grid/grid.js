@@ -30,6 +30,16 @@ function Grid(props) {
             setEditWalls = {props.setEditWalls}
             blockedNodes = {props.blockedNodes}
             setBlockedNodes = {props.setBlockedNodes}
+
+            editStartNode = {props.editStartNode}
+            setEditStartNode = {props.setEditStartNode}
+            editEndNode = {props.editEndNode}
+            setEditEndNode = {props.setEditEndNode}
+
+            startNode = {props.startNode}
+            setStartNode = {props.setStartNode}
+            endNode = {props.endNode}
+            setEndNode = {props.setEndNode}
         />);
     }
 

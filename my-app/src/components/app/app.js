@@ -18,12 +18,15 @@ function App() {
 
   const [blockedNodes, setBlockedNodes] = useState({});
   const [startNode, setStartNode] = useState(0);
-  const [endNode, setEndNode] = useState(NUM_OF_TOTAL_NODES);
+  const [endNode, setEndNode] = useState(NUM_OF_TOTAL_NODES-1);
+
   const [editWalls,setEditWalls] = useState(false);
+  const [editStartNode, setEditStartNode] = useState(false);
+  const [editEndNode, setEditEndNode] = useState(false);
 
   // GRID GRAPH
   const GRID_GRAPH = new GridGraph(NUM_OF_NODES_PER_SIDE); // internally forms a graph with nodes representing a grid (weight between every node is 1)
-  const PATH = new DijkstrasAlgorithm(GRID_GRAPH, 6, 50); // compute dijkstra's algorithm
+  const PATH = new DijkstrasAlgorithm(GRID_GRAPH, startNode, endNode); // compute dijkstra's algorithm
   const SHORTEST_PATH = [...PATH.getShortestPath()]; // copy return array of shortest path
   const VISITED_NODES = [...PATH.getVisitedNodesInOrder()]; // copy return array of all visited nodes in order
 
@@ -49,22 +52,36 @@ function App() {
 
         editWalls = {editWalls}
         setEditWalls = {setEditWalls}
+
+        editStartNode = {editStartNode}
+        setEditStartNode = {setEditStartNode}
+        editEndNode = {editEndNode}
+        setEditEndNode = {setEditEndNode}
+
+        startNode = {startNode}
+        setStartNode = {setStartNode}
+        endNode = {endNode}
+        setEndNode = {setEndNode}
       />
       <Menu
+        // DRIVE
         VISITED_NODES = {VISITED_NODES}
-
         numOfVisitedNodesSoFar = {numOfVisitedNodesSoFar}
         setNumOfVisitedNodesSoFar = {setNumOfVisitedNodesSoFar}
         visitedNodesSoFar = {visitedNodesSoFar}
         setVisitedNodesSoFar = {setVisitedNodesSoFar}
 
         SHORTEST_PATH = {SHORTEST_PATH}
-
         numOfShortestPathNodesSoFar = {numOfShortestPathNodesSoFar}
         setNumOfShortestPathNodesSoFar = {setNumOfShortestPathNodesSoFar}
         shortestPathNodesSoFar = {shortestPathNodesSoFar}
         setShortestPathNodesSoFar = {setShortestPathNodesSoFar}
 
+        // ROUTE
+        editStartNode = {editStartNode}
+        setEditStartNode = {setEditStartNode}
+        editEndNode = {editEndNode}
+        setEditEndNode = {setEditEndNode}
       />
     </div>
   );

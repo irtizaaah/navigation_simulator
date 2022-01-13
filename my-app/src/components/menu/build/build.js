@@ -1,34 +1,33 @@
 import "./build.css"
-import React, { useState, useEffect, useRef } from 'react';
 import Button from '../button/button';
-
+/*
+  Toggles need to be checked they're set to false because unlike buttons they aren't designed to 
+  automatically return to false after they're clicked
+*/
 function Build(props){
     return (
-      <div className = "route_container">
+      <div className = "build_container">
         <h1>{props.name}</h1>
         <Button 
             name = "Block"
             handleClick = {() => {
-              props.setEditBlockedNodes(props.editBlockedNodes ? false : true);
-              props.setRemoveNodes(false);
-              console.log("edit block on")
+              props.setEditBlockedNodes(props.editBlockedNodes ? false : true); // toggle
+              props.setEditResetedNodes(false); // in case state wasn't set to false already
             }}
         />
         <Button 
             name = "Remove"
             handleClick = {() => {
-              props.setRemoveNodes(props.removeNodes ? false : true);
-              props.setEditBlockedNodes(false); 
-              console.log("remove nodes on")
+              props.setEditResetedNodes(props.editResetedNodes ? false : true); // toggle
+              props.setEditBlockedNodes(false); // in case state wasn't set to false already
             }}
         />
         <Button 
             name = "Weight"
             handleClick = {() => {
-              props.setEditWeightedNodes(true);
-              props.setEditBlockedNodes(false); 
-              props.setRemoveNodes(false);
-              console.log("edit weight on")
+              props.setEditWeightedNodes(true); // button
+              props.setEditBlockedNodes(false); // in case state wasn't set to false already
+              props.setEditResetedNodes(false); // in case state wasn't set to false already
             }
           }
         />

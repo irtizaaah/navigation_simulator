@@ -1,65 +1,65 @@
 import "./menu.css";
-import Drive from "./drive/drive";
+import Travel from "./travel/travel";
 import Route from "./route/route";
 import Build from "./build/build";
 
 function Menu(props){
   return (
     <div className = "menu_container">
-        <Drive
-            name = "Drive"
-            VISITED_NODES = {props.VISITED_NODES}
-            numOfVisitedNodesSoFar = {props.numOfVisitedNodesSoFar}
-            setNumOfVisitedNodesSoFar = {props.setNumOfVisitedNodesSoFar}
-            visitedNodesSoFar = {props.visitedNodesSoFar}
-            setVisitedNodesSoFar = {props.setVisitedNodesSoFar}
+        <Travel
+          name = "Travel"
+          VISITED_NODES = {props.VISITED_NODES}
+          numOfVisitedNodesSoFar = {props.numOfVisitedNodesSoFar}
+          setNumOfVisitedNodesSoFar = {props.setNumOfVisitedNodesSoFar}
+          visitedNodesSoFar = {props.visitedNodesSoFar}
+          setVisitedNodesSoFar = {props.setVisitedNodesSoFar}
 
+          // SHORTEST PATH
+          SHORTEST_PATH_NODES = {props.SHORTEST_PATH_NODES}
+          numOfShortestPathNodesSoFar = {props.numOfShortestPathNodesSoFar}
+          setNumOfShortestPathNodesSoFar = {props.setNumOfShortestPathNodesSoFar}
+          shortestPathNodesSoFar = {props.shortestPathNodesSoFar}
+          setShortestPathNodesSoFar = {props.setShortestPathNodesSoFar}
 
-            SHORTEST_PATH = {props.SHORTEST_PATH}
-            numOfShortestPathNodesSoFar = {props.numOfShortestPathNodesSoFar}
-            setNumOfShortestPathNodesSoFar = {props.setNumOfShortestPathNodesSoFar}
-            shortestPathNodesSoFar = {props.shortestPathNodesSoFar}
-            setShortestPathNodesSoFar = {props.setShortestPathNodesSoFar}
-
-            visualizeVisitedNodes = {props.visualizeVisitedNodes}
-            setVisualizeVisitedNodes = {props.setVisualizeVisitedNodes}
-            visualizeShortestPath = {props.visualizeShortestPath}
-            setVisualizeShortestPath = {props.setVisualizeShortestPath}
+          // VISUALIZE GRID
+          visualizeVisitedNodes = {props.visualizeVisitedNodes}
+          setVisualizeVisitedNodes = {props.setVisualizeVisitedNodes}
+          visualizeShortestPath = {props.visualizeShortestPath}
+          setVisualizeShortestPath = {props.setVisualizeShortestPath}
         />
 
         <Route
-            name = "Route"
-            editStartNode = {props.editStartNode}
-            setEditStartNode = {props.setEditStartNode}
-            editEndNode = {props.editEndNode}
-            setEditEndNode = {props.setEditEndNode}
-            editBlockedNodes = {props.editBlockedNodes}
-            setEditBlockedNodes = {props.setEditBlockedNodes}
-            setRemoveNodes = {props.setRemoveNodes}
+          name = "Route"
+          // START AND END
+          editStartNode = {props.editStartNode}
+          setEditStartNode = {props.setEditStartNode}
+
+          editEndNode = {props.editEndNode}
+          setEditEndNode = {props.setEditEndNode}
+
+          // RESET AND BLOCKED NODES
+          editResetedNodes = {props.editResetedNodes}
+          setEditResetedNodes = {props.setEditResetedNodes}
+          editBlockedNodes = {props.editBlockedNodes}
+          setEditBlockedNodes = {props.setEditBlockedNodes}
         />
         
         <Build
-            name = "Build"
-            editBlockedNodes = {props.editBlockedNodes}
-            setEditBlockedNodes = {props.setEditBlockedNodes}
-            editWeightedNodes = {props.editWeightedNodes}
-            setEditWeightedNodes = {props.setEditWeightedNodes}
-            setRemoveNodes = {props.setRemoveNodes}
+          name = "Build"
+          // BLOCKED NODES
+          editBlockedNodes = {props.editBlockedNodes}
+          setEditBlockedNodes = {props.setEditBlockedNodes}
+
+          // WEIGHTED NODES
+          editWeightedNodes = {props.editWeightedNodes}
+          setEditWeightedNodes = {props.setEditWeightedNodes}
+
+          // REMOVE NODES
+          editResetedNodes = {props.editResetedNodes}
+          setEditResetedNodes = {props.setEditResetedNodes}
         />
     </div>
   );
 }
 
 export default Menu;
-
-/* 
-<SubMenu
-name = "Build"
-/>
-<SubMenu
-name = "Route"
-/>
-<SubMenu
-name = "Drive"
-/> 
-*/

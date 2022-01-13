@@ -1,100 +1,97 @@
 import "./square.css";
 
 function Square(props) {
-
-    // HANDLE MOUSE EVENTS
     function handleMouseOver(){
-        if(props.editBlockedNodes === true && props.editContinuousBlockedNodes === true){
+        if(props.editBlockedNodes === true && props.editContinuousBlockedNodes === true && props.nodeIndex !== props.startNode && props.nodeIndex !== props.endNode){
             props.setBlockedNodes(() => {
-                console.log("cliked on block node");
                 let newBlockedNodes = {...props.blockedNodes};
-                newBlockedNodes[props.squareIndex] = true;
-                return newBlockedNodes;
+                newBlockedNodes[props.nodeIndex] = true;
+                return newBlockedNodes; // return a copy of array instead of mutating state in order for useEffect to register state change
             });
             props.setGridGraph(()=>{
-                console.log("grid weight changed");
-                props.gridGraph.changeWeight(props.squareIndex, 0);
-                return props.gridGraph;
+                props.gridGraph.changeWeight(props.nodeIndex, 0);
+                return props.gridGraph; // since gridGraph is mutated, useEffect doesn't register setGridGraph as changing gridGraphs' state
             })
         }
-        if(props.removeNodes === true && props.removeContinuousNodes === true){
-            if(props.blockedNodes[props.squareIndex]){
-                delete props.blockedNodes[props.squareIndex];
+        if(props.editResetedNodes === true && props.removeContinuousNodes === true && props.nodeIndex !== props.startNode && props.nodeIndex !== props.endNode){
+            if(props.blockedNodes[props.nodeIndex]){
+                delete props.blockedNodes[props.nodeIndex];
             }
-            if(props.weightedNodes[props.squareIndex]){
-                delete props.weightedNodes[props.squareIndex];
+            if(props.weightedNodes[props.nodeIndex]){
+                delete props.weightedNodes[props.nodeIndex];
             }
-            props.setRemovedNodes(() => {
-                let newRemovedNodes = {...props.removedNodes}; 
-                newRemovedNodes[props.squareIndex] = true;
+            props.setResetedNodes(() => {
+                let newRemovedNodes = {...props.resetedNodes}; 
+                newRemovedNodes[props.nodeIndex] = true;
                 return newRemovedNodes;
             });
             props.setGridGraph(()=>{
-                console.log("grid weight reset");
-                props.gridGraph.changeWeight(props.squareIndex, 1);
-                return props.gridGraph;
+                props.gridGraph.changeWeight(props.nodeIndex, 1);
+                return props.gridGraph; // since gridGraph is mutated, useEffect doesn't register setGridGraph as changing gridGraphs' state
             })
-            console.log("removed node")
         }
     }
 
     function handleMouseClick(){
+        // EDIT START NODE
+        if(props.nodeIndex === props.startNode){
+            props.setEditStartNode(true);
+        }
+        else if(props.nodeIndex === props.endNode){
+            props.setEditEndNode(true);
+        }
         if(props.editStartNode === true){
-            props.setStartNode(props.squareIndex);
-            console.log("cliked on start node")
+            props.setStartNode(props.nodeIndex);
             props.setEditStartNode(false);
         }
+        // EDIT END NODE
         else if(props.editEndNode === true){
-            props.setEndNode(props.squareIndex);
-            console.log("cliked on end node")
+            props.setEndNode(props.nodeIndex);
             props.setEditEndNode(false);
         }
-        else if(props.removeNodes === true){
+        // EDIT RESET NODES
+        else if(props.editResetedNodes === true){
             props.setRemoveContinuousNodes(props.removeContinuousNodes ? false : true);
-            if(props.blockedNodes[props.squareIndex]){
-                delete props.blockedNodes[props.squareIndex];
+            if(props.blockedNodes[props.nodeIndex]){
+                delete props.blockedNodes[props.nodeIndex];
             }
-            if(props.weightedNodes[props.squareIndex]){
-                delete props.weightedNodes[props.squareIndex];
+            if(props.weightedNodes[props.nodeIndex]){
+                delete props.weightedNodes[props.nodeIndex];
             }
-            props.setRemovedNodes(() => {
-                let newRemovedNodes = {...props.removedNodes}; 
-                newRemovedNodes[props.squareIndex] = true;
-                return newRemovedNodes;
+            props.setResetedNodes(() => {
+                let newRemovedNodes = {...props.resetedNodes}; 
+                newRemovedNodes[props.nodeIndex] = true; 
+                return newRemovedNodes; // return a copy of array instead of mutating state in order for useEffect to register state change
             });
             props.setGridGraph(()=>{
-                console.log("grid weight reset");
-                props.gridGraph.changeWeight(props.squareIndex, 1);
-                return props.gridGraph;
+                props.gridGraph.changeWeight(props.nodeIndex, 1);
+                return props.gridGraph; // since gridGraph is mutated, useEffect doesn't register setGridGraph as changing gridGraphs' state
             })
-            console.log("removed node")
         }
-        else if(props.editWeightedNodes === true){
+        // EDIT WEIGHTED NODES
+        else if(props.editWeightedNodes === true && props.nodeIndex !== props.startNode && props.nodeIndex !== props.endNode){
             props.setWeightedNodes(() => {
-                console.log("cliked on weighted node");
                 let newWeightedNodes = {...props.weightedNodes}; 
-                newWeightedNodes[props.squareIndex] = true;
-                return newWeightedNodes;
+                newWeightedNodes[props.nodeIndex] = true;
+                return newWeightedNodes; // return a copy of array instead of mutating state in order for useEffect to register state change
             });
             props.setGridGraph(()=>{
-                console.log("grid weight changed to 1000");
-                props.gridGraph.changeWeight(props.squareIndex, 3);
-                return props.gridGraph;
+                props.gridGraph.changeWeight(props.nodeIndex, 3);
+                return props.gridGraph; // since gridGraph is mutated, useEffect doesn't register setGridGraph as changing gridGraphs' state
             })
             props.setEditWeightedNodes(false);
         }
-        else if(props.editBlockedNodes === true){
+        // EDIT BLOCKED NODES
+        else if(props.editBlockedNodes === true && props.nodeIndex !== props.startNode && props.nodeIndex !== props.endNode){
             props.setEditContinuousBlockedNodes(props.editContinuousBlockedNodes ? false : true);
             props.setBlockedNodes(() => {
-                console.log("cliked on block node");
                 let newBlockedNodes = {...props.blockedNodes}; 
-                newBlockedNodes[props.squareIndex] = true;
-                return newBlockedNodes;
+                newBlockedNodes[props.nodeIndex] = true;
+                return newBlockedNodes; // return a copy of array instead of mutating state in order for useEffect to register state change
             });
             props.setGridGraph(()=>{
-                console.log("grid weight changed");
-                props.gridGraph.changeWeight(props.squareIndex, 0);
-                return props.gridGraph;
+                props.gridGraph.changeWeight(props.nodeIndex, 0);
+                return props.gridGraph; // since gridGraph is mutated, useEffect doesn't register setGridGraph as changing gridGraphs' state
             })
         }
     }
@@ -103,8 +100,8 @@ function Square(props) {
         <div className = "square_container-outlined">
             <div 
                 className = {`
-                square_container-node 
-                    ${props.NodeClassName}
+                        square_container-node 
+                        ${props.NodeClassName}
                     `}
                 onClick = {() => {handleMouseClick()}}
                 onMouseOver = {() => {handleMouseOver();}}
@@ -113,9 +110,6 @@ function Square(props) {
         </div>
     );
 }
-
-// onMouseOver = {() => {handleMouseOver();}}
-
 
 export default Square;
  

@@ -46,13 +46,16 @@ function App() {
   const [gridGraph, setGridGraph] = useState(new GridGraph(NUM_OF_NODES_PER_SIDE)); // internally forms a graph with nodes representing a grid (weight between every node is 1)
   const [path, setPath] = useState(new DijkstrasAlgorithm(gridGraph, startNode, endNode)); // compute dijkstra's algorithm
   
-  const SHORTEST_PATH_NODES = [...path.getShortestPath()]; // copy return array of shortest path
-  const VISITED_NODES = [...path.getVisitedNodesInOrder()]; // copy return array of all visited nodes in order
-
+  const [shortestPathNodes, setShortestPathNodes] = useState([...path.getShortestPath()]); // copy return array of shortest path
+  const [visitedNodes, setVisitedNodes] = useState([...path.getVisitedNodesInOrder()]); // copy return array of all visited nodes in order
+  
   useEffect(() => { // recalculate dijkstra's algorithm whenever mentioned dependencies change
+    const newPath = new DijkstrasAlgorithm(gridGraph, startNode, endNode);
     setPath(()=>{
-      return new DijkstrasAlgorithm(gridGraph, startNode, endNode);
+      return newPath;
     })
+    setShortestPathNodes([...newPath.getShortestPath()]);
+    setVisitedNodes([...newPath.getVisitedNodesInOrder()]);
   }, [startNode, endNode, blockedNodes, weightedNodes, resetedNodes, gridGraph]) 
   // everytime gridGraph state is updated, setGridGraph recieves a mutated gridGraph so it's not registered as changed and useEffect doesn't run 
   // I decided to let the other states update useEffect instead, since sending gridGraph a new copy of a 2D array seemed unnecessarily costly for this time dependant visualization
@@ -68,12 +71,12 @@ function App() {
         setGridGraph = {setGridGraph}
 
         // VISITED NODES
-        VISITED_NODES = {VISITED_NODES}
+        visitedNodes = {visitedNodes}
         numOfVisitedNodesSoFar = {numOfVisitedNodesSoFar}
         visitedNodesSoFar = {visitedNodesSoFar}
 
         // SHORTEST PATH
-        SHORTEST_PATH_NODES = {SHORTEST_PATH_NODES}
+        shortestPathNodes = {shortestPathNodes}
         numOfShortestPathNodesSoFar = {numOfShortestPathNodesSoFar}
         shortestPathNodesSoFar = {shortestPathNodesSoFar}
 
@@ -121,14 +124,14 @@ function App() {
       <Menu
         // TRAVEL
         // VISITED NODES
-        VISITED_NODES = {VISITED_NODES}
+        visitedNodes = {visitedNodes}
         numOfVisitedNodesSoFar = {numOfVisitedNodesSoFar}
         setNumOfVisitedNodesSoFar = {setNumOfVisitedNodesSoFar}
         visitedNodesSoFar = {visitedNodesSoFar}
         setVisitedNodesSoFar = {setVisitedNodesSoFar}
 
         // SHORTEST PATH
-        SHORTEST_PATH_NODES = {SHORTEST_PATH_NODES}
+        shortestPathNodes = {shortestPathNodes}
         numOfShortestPathNodesSoFar = {numOfShortestPathNodesSoFar}
         setNumOfShortestPathNodesSoFar = {setNumOfShortestPathNodesSoFar}
         shortestPathNodesSoFar = {shortestPathNodesSoFar}

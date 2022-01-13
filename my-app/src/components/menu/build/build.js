@@ -7,7 +7,6 @@ import Button from '../button/button';
 function Build(props){
     return (
       <div className = "build_container">
-        <h1>{props.name}</h1>
         <Button 
             name = "Block"
             handleClick = {() => {

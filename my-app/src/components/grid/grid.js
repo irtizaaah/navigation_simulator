@@ -19,7 +19,7 @@ function Grid(props) {
             NodeClassName = "node-weighted";
         }
         else if(nodeIndex in props.visitedNodesSoFar){
-            if(nodeIndex in props.shortestPathNodesSoFar && props.numOfVisitedNodesSoFar === props.VISITED_NODES.length){
+            if(nodeIndex in props.shortestPathNodesSoFar && props.numOfVisitedNodesSoFar === props.visitedNodes.length){
                 // checks if nodes exist in shortest path nodes list after all the visited nodes have been iterated over
                 NodeClassName = "node-shortest_path";
             }
@@ -45,12 +45,12 @@ function Grid(props) {
             setGridGraph = {props.setGridGraph}
 
             // VISITED NODES
-            VISITED_NODES = {props.VISITED_NODES}
+            visitedNodes = {props.visitedNodes}
             numOfVisitedNodesSoFar = {props.numOfVisitedNodesSoFar}
             visitedNodesSoFar = {props.visitedNodesSoFar}
 
             // SHORTEST PATH
-            SHORTEST_PATH_NODES = {props.SHORTEST_PATH_NODES}
+            shortestPathNodes = {props.shortestPathNodes}
             numOfShortestPathNodesSoFar = {props.numOfShortestPathNodesSoFar}
             shortestPathNodesSoFar = {props.shortestPathNodesSoFar}
 

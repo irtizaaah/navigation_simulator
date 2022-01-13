@@ -6,16 +6,16 @@ import Build from "./build/build";
 function Menu(props){
   return (
     <div className = "menu_container">
+        <h1>Travel</h1>
         <Travel
-          name = "Travel"
-          VISITED_NODES = {props.VISITED_NODES}
+          visitedNodes = {props.visitedNodes}
           numOfVisitedNodesSoFar = {props.numOfVisitedNodesSoFar}
           setNumOfVisitedNodesSoFar = {props.setNumOfVisitedNodesSoFar}
           visitedNodesSoFar = {props.visitedNodesSoFar}
           setVisitedNodesSoFar = {props.setVisitedNodesSoFar}
 
           // SHORTEST PATH
-          SHORTEST_PATH_NODES = {props.SHORTEST_PATH_NODES}
+          shortestPathNodes = {props.shortestPathNodes}
           numOfShortestPathNodesSoFar = {props.numOfShortestPathNodesSoFar}
           setNumOfShortestPathNodesSoFar = {props.setNumOfShortestPathNodesSoFar}
           shortestPathNodesSoFar = {props.shortestPathNodesSoFar}
@@ -28,8 +28,8 @@ function Menu(props){
           setVisualizeShortestPath = {props.setVisualizeShortestPath}
         />
 
+        <h1>Route</h1>
         <Route
-          name = "Route"
           // START AND END
           editStartNode = {props.editStartNode}
           setEditStartNode = {props.setEditStartNode}
@@ -43,9 +43,8 @@ function Menu(props){
           editBlockedNodes = {props.editBlockedNodes}
           setEditBlockedNodes = {props.setEditBlockedNodes}
         />
-        
+        <h1>Build</h1>
         <Build
-          name = "Build"
           // BLOCKED NODES
           editBlockedNodes = {props.editBlockedNodes}
           setEditBlockedNodes = {props.setEditBlockedNodes}

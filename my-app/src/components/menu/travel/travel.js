@@ -1,11 +1,11 @@
 import "./travel.css";
 import Button from "../button/button";
 import useInterval from "./use-interval";
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 
 function Travel(props){
 
-    const TIME_PER_ITERATION = 100;
+    const TIME_PER_ITERATION = 150;
     useInterval(animateVisitedNodes, props.visualizeVisitedNodes ? TIME_PER_ITERATION:null);
     useInterval(animateShortestPathNodes, props.visualizeShortestPath ? TIME_PER_ITERATION:null);
     /*
@@ -14,33 +14,35 @@ function Travel(props){
     */
 
     useEffect(()=>{ // turn off visualizeVisitedNodes when all visited nodes have been traversed
-        if(props.numOfVisitedNodesSoFar === props.VISITED_NODES.length){
+        if(props.numOfVisitedNodesSoFar === props.visitedNodes.length){
+            console.log("visited complete");
             props.setVisualizeVisitedNodes(false);
             props.setVisualizeShortestPath(true);
         }
-    },[props.visualizeVisitedNodes, props.visitedNodesSoFar, props.VISITED_NODES])
+    },[props.numOfVisitedNodesSoFar, props.visualizeVisitedNodes, props.visitedNodesSoFar, props.visitedNodes])
 
     useEffect(()=>{ // turn off visualizeShortestPathNodes when all shortest path nodes have been traversed
-        if(props.numOfShortestPathNodesSoFar === props.SHORTEST_PATH_NODES.length){
+        if(props.numOfShortestPathNodesSoFar === props.shortestPathNodes.length){
+            console.log("shortest path checked")
             props.setVisualizeShortestPath(false);
         }
-    },[props.visualizeShortestPath, props.shortestPathNodesSoFar, props.SHORTEST_PATH_NODES])
+    },[props.numOfShortestPathNodesSoFar, props.visualizeShortestPath, props.shortestPathNodesSoFar, props.shortestPathNodes])
 
-    function animateVisitedNodes(){ // update visitedNodesSoFar with next node from VISITED_NODES every iteration
+    function animateVisitedNodes(){ // update visitedNodesSoFar with next node from visitedNodes every iteration
         props.setNumOfVisitedNodesSoFar(props.numOfVisitedNodesSoFar + 1);
         props.setVisitedNodesSoFar(() => {
             for(let i = 0; i < props.numOfVisitedNodesSoFar; i++){
-                props.visitedNodesSoFar[props.VISITED_NODES[i]] = true;
+                props.visitedNodesSoFar[props.visitedNodes[i]] = true;
             }
             return props.visitedNodesSoFar;
         });
     };
 
-    function animateShortestPathNodes(){ // update shortestPathNodesSoFar with next node from SHORTEST_PATH_NODES (nodes) every iteration
+    function animateShortestPathNodes(){ // update shortestPathNodesSoFar with next node from shortestPathNodes (nodes) every iteration
         props.setNumOfShortestPathNodesSoFar(props.numOfShortestPathNodesSoFar + 1);
         props.setShortestPathNodesSoFar(() => {
             for(let i = 0; i < props.numOfShortestPathNodesSoFar; i++){
-                props.shortestPathNodesSoFar[props.SHORTEST_PATH_NODES[i]] = true;
+                props.shortestPathNodesSoFar[props.shortestPathNodes[i]] = true;
             }
             return props.shortestPathNodesSoFar;
         });

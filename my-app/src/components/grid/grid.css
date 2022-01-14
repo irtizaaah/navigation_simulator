@@ -1,9 +1,12 @@
 .grid_container{
     display: grid;
-    /* numOfNodesPerSide = 15*/
-    grid-template-columns: repeat(20, 1fr);
-    grid-template-rows: repeat(20, 1fr);
+    /* numOfNodesPerSide = 20*/
+    grid-template-columns: repeat(18, 1fr);
+    grid-template-rows: repeat(18, 1fr);
 
-    height: 30rem;
-    width: 30rem;
+    height: 28rem;
+    width: 28rem;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0);
+    border-color: var(--grid-border-color);
 }

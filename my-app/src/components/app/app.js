@@ -7,7 +7,7 @@ import {useState, useEffect} from 'react';
 
 function App() {
   // GRID UI
-  const NUM_OF_NODES_PER_SIDE = 20; // warning! CSS grid (grid.css) builds the square grid using this value (if changed, changed no. of columns there too)
+  const NUM_OF_NODES_PER_SIDE = 18; // warning! CSS grid (grid.css) builds the square grid using this value (if changed, changed no. of columns there too)
   const NUM_OF_TOTAL_NODES = NUM_OF_NODES_PER_SIDE * NUM_OF_NODES_PER_SIDE; // builds a n x n grid of squares
 
   // VISITED & SHORTEST PATH NODES
@@ -36,7 +36,7 @@ function App() {
   const [editWeightedNodes, setEditWeightedNodes] = useState(false); // this allows the grid to only created weighted nodes everytime a node is clicked
 
   const [editResetedNodes, setEditResetedNodes] = useState(false); // this allows the grid to reset blocked/weighted nodes to a default node everytime a node is clicked
-  const [removeContinuousNodes, setRemoveContinuousNodes] = useState(false); // this allows the grid to reset blocked/weighted nodes to a default node every node the mouse floats over
+  const [editContinuousResetedNodes, setEditContinuousResetedNodes] = useState(false); // this allows the grid to reset blocked/weighted nodes to a default node every node the mouse floats over
   
   // GRID VISUALIZE MODES
   const [visualizeVisitedNodes, setVisualizeVisitedNodes] = useState(false); // this allows the grid to visualize all visited nodes
@@ -118,8 +118,12 @@ function App() {
         editResetedNodes = {editResetedNodes}
         setEditResetedNodes = {setEditResetedNodes}
 
-        removeContinuousNodes = {removeContinuousNodes}
-        setRemoveContinuousNodes = {setRemoveContinuousNodes}
+        editContinuousResetedNodes = {editContinuousResetedNodes}
+        setEditContinuousResetedNodes = {setEditContinuousResetedNodes}
+
+        // VISUALIZE VISITED AND SHORTEST PATH NODES
+        visualizeVisitedNodes = {visualizeVisitedNodes}
+        visualizeShortestPath = {visualizeShortestPath}
       />
       <Menu
         // TRAVEL
@@ -160,6 +164,7 @@ function App() {
         setEditWeightedNodes = {setEditWeightedNodes}
 
         // REMOVE NODES
+        editResetedNodes = {editResetedNodes}
         setEditResetedNodes = {setEditResetedNodes}
       />
     </div>

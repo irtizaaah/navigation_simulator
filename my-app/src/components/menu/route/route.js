@@ -10,20 +10,29 @@ function Route(props){
         <Button 
             name = "Start"
             handleClick = {() => {
-              props.setEditStartNode(true); // button
-              props.setEditBlockedNodes(false); // in case state wasn't set to false already (these are toggles)
-              props.setEditResetedNodes(false); // in case state wasn't set to false already (these are toggles)
+              props.setEditStartNode(props.editStartNode ? false : true); 
+              props.setEditEndNode(false); // in case state wasn't set to false already
+              props.setEditBlockedNodes(false); // in case state wasn't set to false already
+              props.setEditResetedNodes(false); // in case state wasn't set to false already
+              props.setEditWeightedNodes(false); // in case state wasn't set to false already
+
             }
           }
+
+          buttonClassName = {props.editStartNode ? "button_container-button-on" : ""}
         />
         <Button 
             name = "End"
             handleClick = {() => {
-              props.setEditEndNode(true); // button
-              props.setEditBlockedNodes(false); // in case state wasn't set to false already (these are toggles)
-              props.setEditResetedNodes(false); // in case state wasn't set to false already (these are toggles)
+              props.setEditEndNode(props.editEndNode ? false : true);
+              props.setEditStartNode(false); // in case state wasn't set to false already
+              props.setEditBlockedNodes(false); // in case state wasn't set to false already
+              props.setEditResetedNodes(false); // in case state wasn't set to false already
+              props.setEditWeightedNodes(false); // in case state wasn't set to false already
             }
           }
+
+          buttonClassName = {props.editEndNode ? "button_container-button-on" : ""}
         />
       </div>
     );

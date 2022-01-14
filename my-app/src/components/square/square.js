@@ -13,7 +13,7 @@ function Square(props) {
                 return props.gridGraph; // since gridGraph is mutated, useEffect doesn't register setGridGraph as changing gridGraphs' state
             })
         }
-        if(props.editResetedNodes === true && props.removeContinuousNodes === true && props.nodeIndex !== props.startNode && props.nodeIndex !== props.endNode){
+        if(props.editResetedNodes === true && props.editContinuousResetedNodes === true && props.nodeIndex !== props.startNode && props.nodeIndex !== props.endNode){
             if(props.blockedNodes[props.nodeIndex]){
                 delete props.blockedNodes[props.nodeIndex];
             }
@@ -37,7 +37,7 @@ function Square(props) {
         if(props.nodeIndex === props.startNode){
             props.setEditStartNode(true);
         }
-        else if(props.nodeIndex === props.endNode){
+        else if(props.nodeIndex === props.endNode && !(props.nodeIndex in props.blockedNodes)){
             props.setEditEndNode(true);
         }
         if(props.editStartNode === true){
@@ -45,13 +45,13 @@ function Square(props) {
             props.setEditStartNode(false);
         }
         // EDIT END NODE
-        else if(props.editEndNode === true){
+        else if(props.editEndNode === true && !(props.nodeIndex in props.blockedNodes)){
             props.setEndNode(props.nodeIndex);
             props.setEditEndNode(false);
         }
         // EDIT RESET NODES
         else if(props.editResetedNodes === true){
-            props.setRemoveContinuousNodes(props.removeContinuousNodes ? false : true);
+            props.setEditContinuousResetedNodes(props.editContinuousResetedNodes ? false : true);
             if(props.blockedNodes[props.nodeIndex]){
                 delete props.blockedNodes[props.nodeIndex];
             }
@@ -79,7 +79,6 @@ function Square(props) {
                 props.gridGraph.changeWeight(props.nodeIndex, 3);
                 return props.gridGraph; // since gridGraph is mutated, useEffect doesn't register setGridGraph as changing gridGraphs' state
             })
-            props.setEditWeightedNodes(false);
         }
         // EDIT BLOCKED NODES
         else if(props.editBlockedNodes === true && props.nodeIndex !== props.startNode && props.nodeIndex !== props.endNode){
@@ -97,11 +96,14 @@ function Square(props) {
     }
 
     return(
-        <div className = "square_container-outlined">
+        <div className = {`square_container ${props.gridEditClassName}`}>
             <div 
                 className = {`
-                        square_container-node 
-                        ${props.NodeClassName}
+                        ${props.nodeEditClassName}
+                        ${props.nodeClassName}
+                        ${props.editContinuousResetedNodes || props.editContinuousBlockedNodes || props.editWeightedNodes ? "node-continuous" : ""}
+                        ${props.editStartNode ? "node-start-continuous" : ""}
+                        ${props.editEndNode ? "node-end-continuous" : ""}
                     `}
                 onClick = {() => {handleMouseClick()}}
                 onMouseOver = {() => {handleMouseOver();}}

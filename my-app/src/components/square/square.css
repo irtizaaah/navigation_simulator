@@ -1,4 +1,7 @@
 .square_container{
+  display: flex;
+  justify-content: center;
+  align-items:  center;
   background-color: var(--node-unvisited-color);
 }
 .square_container-grid_outline_edit{
@@ -6,7 +9,7 @@
   justify-content: center;
   align-items:  center;
   border-style: dashed;
-  border-width: 0.025em;
+  border-width: 1px;
   border-color: var(--grid-edit-color);
   margin-top: -1px;
   margin-left: -1px;
@@ -16,7 +19,7 @@
   justify-content: center;
   align-items:  center;
   border-style: dashed;
-  border-width: 0.025em;
+  border-width: 1px;
   border-color: var(--grid-color);
   margin-top: -1px;
   margin-left: -1px;

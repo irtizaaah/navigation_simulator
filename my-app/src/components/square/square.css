@@ -122,14 +122,14 @@
 
   .node-blocked {
     background-color: var(--node-blocked-color);
-    animation-name: blocked_animation;
+    /* animation-name: blocked_animation;
     animation-duration: 1.5s;
     animation-timing-function: ease-out;
     animation-delay: 0;
     animation-direction: alternate;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    animation-play-state: running;
+    animation-play-state: running; */
   }
   @keyframes blocked_animation {
     0% {

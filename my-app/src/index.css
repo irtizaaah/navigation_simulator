@@ -14,11 +14,9 @@
   --grid-border-color: #8abdbe;
   --grid-color: #d9dfdf;
 
-
   --node-unvisited-color:#ffffff;
   --node-unvisited-edit-color: #f8f8f0;
   --node-hovered-color: #e9e8e8;
-  --node-blocked-color: #dfdfdf;
   --node-continuous-hovered-color: #FFC60B;
   --node-start-color: #69e4bb;
   --node-start-hovered-color: #aaffe3;
@@ -39,6 +37,7 @@
   --node-shortest_path-75-color:#FEFFDB;
   --node-shortest_path-100-color:#ffe23e;
 
+  --node-blocked-color: #dfdfdf;
   --node-blocked-50-color: #9abcd3;
   --node-blocked-75-color:#FAD586;
   --node-blocked-100-color:#dfdfdf;

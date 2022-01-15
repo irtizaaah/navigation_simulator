@@ -37,7 +37,7 @@ function App() {
 
   const [editResetedNodes, setEditResetedNodes] = useState(false); // this allows the grid to reset blocked/weighted nodes to a default node everytime a node is clicked
   const [editContinuousResetedNodes, setEditContinuousResetedNodes] = useState(false); // this allows the grid to reset blocked/weighted nodes to a default node every node the mouse floats over
-  
+
   // GRID VISUALIZE MODES
   const [visualizeVisitedNodes, setVisualizeVisitedNodes] = useState(false); // this allows the grid to visualize all visited nodes
   const [visualizeShortestPath, setVisualizeShortestPath] = useState(false); // this allows the grid to visualize all the shortest path nodes
@@ -48,7 +48,7 @@ function App() {
   
   const [shortestPathNodes, setShortestPathNodes] = useState([...path.getShortestPath()]); // copy return array of shortest path
   const [visitedNodes, setVisitedNodes] = useState([...path.getVisitedNodesInOrder()]); // copy return array of all visited nodes in order
-  
+
   useEffect(() => { // recalculate dijkstra's algorithm whenever mentioned dependencies change
     const newPath = new DijkstrasAlgorithm(gridGraph, startNode, endNode);
     setPath(()=>{
@@ -56,10 +56,8 @@ function App() {
     })
     setShortestPathNodes([...newPath.getShortestPath()]);
     setVisitedNodes([...newPath.getVisitedNodesInOrder()]);
-  }, [startNode, endNode, blockedNodes, weightedNodes, resetedNodes, gridGraph]) 
-  // everytime gridGraph state is updated, setGridGraph recieves a mutated gridGraph so it's not registered as changed and useEffect doesn't run 
-  // I decided to let the other states update useEffect instead, since sending gridGraph a new copy of a 2D array seemed unnecessarily costly for this time dependant visualization
 
+  }, [startNode, endNode, blockedNodes, weightedNodes, resetedNodes, gridGraph]) 
   return (
     <div className = "app_container">
       <Grid 
@@ -126,6 +124,55 @@ function App() {
         visualizeShortestPath = {visualizeShortestPath}
       />
       <Menu
+        // MAPS
+        //GRID
+        NUM_OF_TOTAL_NODES = {NUM_OF_TOTAL_NODES}
+        NUM_OF_NODES_PER_SIDE = {NUM_OF_NODES_PER_SIDE}
+        gridGraph = {gridGraph}
+        setGridGraph = {setGridGraph}
+
+        // BLOCKED NODES
+        blockedNodes = {blockedNodes}
+        setBlockedNodes = {setBlockedNodes} 
+
+        // START NODES
+        startNode = {startNode}
+        setStartNode = {setStartNode}
+
+        // END NODES
+        endNode = {endNode}
+        setEndNode = {setEndNode}
+
+        // WEIGHTED NODES
+        weightedNodes = {weightedNodes}
+        setWeightedNodes = {setWeightedNodes}
+
+        // ROUTE
+        // START AND END
+        editStartNode = {editStartNode}
+        setEditStartNode = {setEditStartNode}
+        editEndNode = {editEndNode}
+        setEditEndNode = {setEditEndNode}
+
+        // BLOCKED NODES & RESETED NODES
+        editContinuousResetedNodes = {editContinuousResetedNodes}
+        setEditContinuousResetedNodes = {setEditContinuousResetedNodes}
+        editContinuousBlockedNodes = {editContinuousBlockedNodes}
+        setEditContinuousBlockedNodes = {setEditContinuousBlockedNodes}
+
+        // BUILD
+        // BLOCKED NODES
+        editBlockedNodes = {editBlockedNodes}
+        setEditBlockedNodes = {setEditBlockedNodes}
+
+        // WEIGHTED NODES
+        editWeightedNodes = {editWeightedNodes}
+        setEditWeightedNodes = {setEditWeightedNodes}
+
+        // REMOVE NODES
+        editResetedNodes = {editResetedNodes}
+        setEditResetedNodes = {setEditResetedNodes}
+
         // TRAVEL
         // VISITED NODES
         visitedNodes = {visitedNodes}
@@ -146,26 +193,6 @@ function App() {
         setVisualizeVisitedNodes = {setVisualizeVisitedNodes}
         visualizeShortestPath = {visualizeShortestPath}
         setVisualizeShortestPath = {setVisualizeShortestPath}
-
-        // ROUTE
-        // START AND END
-        editStartNode = {editStartNode}
-        setEditStartNode = {setEditStartNode}
-        editEndNode = {editEndNode}
-        setEditEndNode = {setEditEndNode}
-
-        // BUILD
-        // BLOCKED NODES
-        editBlockedNodes = {editBlockedNodes}
-        setEditBlockedNodes = {setEditBlockedNodes}
-
-        // WEIGHTED NODES
-        editWeightedNodes = {editWeightedNodes}
-        setEditWeightedNodes = {setEditWeightedNodes}
-
-        // REMOVE NODES
-        editResetedNodes = {editResetedNodes}
-        setEditResetedNodes = {setEditResetedNodes}
       />
     </div>
   );

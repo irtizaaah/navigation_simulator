@@ -33,18 +33,33 @@ function Square(props) {
     }
 
     function handleMouseClick(){
-        // EDIT START NODE
-        if(props.nodeIndex === props.startNode){
+        // EDIT START AND END NODE
+        if(props.nodeIndex === props.startNode && !(props.nodeIndex in props.blockedNodes)){
             props.setEditStartNode(true);
+            props.setEditEndNode(false);
+            props.setEditBlockedNodes(false);
+            props.setEditResetedNodes(false); 
+            props.setEditWeightedNodes(false); 
+            props.setEditContinuousBlockedNodes(false);
+            props.setEditContinuousResetedNodes(false);
+            // in case state wasn't set to false already
         }
         else if(props.nodeIndex === props.endNode && !(props.nodeIndex in props.blockedNodes)){
             props.setEditEndNode(true);
+            props.setEditStartNode(false);
+            props.setEditBlockedNodes(false);
+            props.setEditResetedNodes(false); 
+            props.setEditWeightedNodes(false); 
+            props.setEditContinuousBlockedNodes(false);
+            props.setEditContinuousResetedNodes(false);
+            // in case state wasn't set to false already
         }
-        if(props.editStartNode === true){
+
+        if(props.editStartNode === true && !(props.nodeIndex in props.blockedNodes)){
             props.setStartNode(props.nodeIndex);
             props.setEditStartNode(false);
         }
-        // EDIT END NODE
+
         else if(props.editEndNode === true && !(props.nodeIndex in props.blockedNodes)){
             props.setEndNode(props.nodeIndex);
             props.setEditEndNode(false);
@@ -97,18 +112,18 @@ function Square(props) {
 
     return(
         <div className = {`square_container ${props.gridEditClassName}`}>
-            <div 
-                className = {`
-                        ${props.nodeEditClassName}
-                        ${props.nodeClassName}
-                        ${props.editContinuousResetedNodes || props.editContinuousBlockedNodes || props.editWeightedNodes ? "node-continuous" : ""}
-                        ${props.editStartNode ? "node-start-continuous" : ""}
-                        ${props.editEndNode ? "node-end-continuous" : ""}
-                    `}
-                onClick = {() => {handleMouseClick()}}
-                onMouseOver = {() => {handleMouseOver();}}
-            >
-             </div>
+                <div 
+                    className = {`
+                            ${props.nodeEditClassName}
+                            ${props.nodeClassName}
+                            ${props.editContinuousResetedNodes || props.editContinuousBlockedNodes || props.editWeightedNodes ? "node-continuous" : ""}
+                            ${props.editStartNode ? "node-start-continuous" : ""}
+                            ${props.editEndNode ? "node-end-continuous" : ""}
+                        `}
+                    onClick = {() => {handleMouseClick()}}
+                    onMouseOver = {() => {handleMouseOver();}}
+                >
+                </div>
         </div>
     );
 }

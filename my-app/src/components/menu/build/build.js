@@ -6,11 +6,13 @@ function Build(props){
         <Button 
             name = "Block"
             handleClick = {() => {
-              props.setEditBlockedNodes(props.editBlockedNodes ? false : true); 
-              props.setEditStartNode(false); // in case state wasn't set to false already
-              props.setEditEndNode(false); // in case state wasn't set to false already
-              props.setEditResetedNodes(false); // in case state wasn't set to false already
-              props.setEditWeightedNodes(false); // in case state wasn't set to false already
+              props.setEditBlockedNodes(props.editBlockedNodes ? false : true);           
+              props.setEditStartNode(false);
+              props.setEditEndNode(false);
+              props.setEditResetedNodes(false); 
+              props.setEditWeightedNodes(false);
+              props.setEditContinuousResetedNodes(false);
+              // in case state wasn't set to false already
             }}
 
             buttonClassName = {props.editBlockedNodes ? "button_container-button-on" : ""}
@@ -18,11 +20,13 @@ function Build(props){
         <Button 
             name = "Reset"
             handleClick = {() => {
-              props.setEditResetedNodes(props.editResetedNodes ? false : true);
-              props.setEditStartNode(false); // in case state wasn't set to false already
-              props.setEditEndNode(false); // in case state wasn't set to false already
-              props.setEditBlockedNodes(false); // in case state wasn't set to false already
-              props.setEditWeightedNodes(false); // in case state wasn't set to false already
+              props.setEditResetedNodes(props.editResetedNodes ? false : true);         
+              props.setEditStartNode(false);
+              props.setEditEndNode(false);
+              props.setEditBlockedNodes(false); 
+              props.setEditWeightedNodes(false); 
+              props.setEditContinuousBlockedNodes(false);
+              // in case state wasn't set to false already
             }}
 
             buttonClassName = {props.editResetedNodes ? "button_container-button-on" : ""}
@@ -30,11 +34,14 @@ function Build(props){
         <Button 
             name = "Weight"
             handleClick = {() => {
-              props.setEditWeightedNodes(props.editWeightedNodes ? false : true); 
-              props.setEditStartNode(false); // in case state wasn't set to false already
-              props.setEditEndNode(false); // in case state wasn't set to false already
-              props.setEditBlockedNodes(false); // in case state wasn't set to false already
-              props.setEditResetedNodes(false); // in case state wasn't set to false already
+              props.setEditWeightedNodes(props.editWeightedNodes ? false : true);          
+              props.setEditStartNode(false);
+              props.setEditEndNode(false);
+              props.setEditBlockedNodes(false); 
+              props.setEditResetedNodes(false); 
+              props.setEditContinuousBlockedNodes(false);
+              props.setEditContinuousResetedNodes(false);
+              // in case state wasn't set to false already
             }
           }
 

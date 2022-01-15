@@ -10,12 +10,14 @@ function Route(props){
         <Button 
             name = "Start"
             handleClick = {() => {
-              props.setEditStartNode(props.editStartNode ? false : true); 
-              props.setEditEndNode(false); // in case state wasn't set to false already
-              props.setEditBlockedNodes(false); // in case state wasn't set to false already
-              props.setEditResetedNodes(false); // in case state wasn't set to false already
-              props.setEditWeightedNodes(false); // in case state wasn't set to false already
-
+              props.setEditStartNode(props.editStartNode ? false : true);            
+              props.setEditEndNode(false);
+              props.setEditBlockedNodes(false);
+              props.setEditResetedNodes(false); 
+              props.setEditWeightedNodes(false); 
+              props.setEditContinuousBlockedNodes(false);
+              props.setEditContinuousResetedNodes(false);
+              // in case state wasn't set to false already
             }
           }
 
@@ -25,10 +27,13 @@ function Route(props){
             name = "End"
             handleClick = {() => {
               props.setEditEndNode(props.editEndNode ? false : true);
-              props.setEditStartNode(false); // in case state wasn't set to false already
-              props.setEditBlockedNodes(false); // in case state wasn't set to false already
-              props.setEditResetedNodes(false); // in case state wasn't set to false already
-              props.setEditWeightedNodes(false); // in case state wasn't set to false already
+              props.setEditStartNode(false);
+              props.setEditBlockedNodes(false);
+              props.setEditResetedNodes(false); 
+              props.setEditWeightedNodes(false); 
+              props.setEditContinuousBlockedNodes(false);
+              props.setEditContinuousResetedNodes(false);
+              // in case state wasn't set to false already
             }
           }
 

@@ -1,7 +1,7 @@
 import "./travel.css";
 import Button from "../button/button";
 import useInterval from "./use-interval";
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 
 function Travel(props){
 

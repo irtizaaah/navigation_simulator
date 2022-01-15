@@ -95,25 +95,25 @@ class GridGraph{ // builds an undirected graph of nodes and edges representing a
         }
     }
 
-    changeWeight(node, weight){ // change weight of edge between surrounding nodes and given node
+    changeWeight(node, weight){ // changes weight of the edge of surrounding nodes TO the given node
         if(this._rightNodeExists(node) === true){ 
             this.adjacencyMatrix[node+1][node] = weight;
-            this.adjacencyMatrix[node][node+1] = weight;
+            //this.adjacencyMatrix[node][node+1] = weight; // this changes the weight of the given TO the surrounding node
         }
 
         if(this._leftNodeExists(node) === true){
             this.adjacencyMatrix[node-1][node] = weight;
-            this.adjacencyMatrix[node][node-1] = weight;
+            //this.adjacencyMatrix[node][node-1] = weight; 
         }
 
         if(this._topNodeExists(node) === true){ 
             this.adjacencyMatrix[node+this.numOfNodesPerSide][node] = weight;
-            this.adjacencyMatrix[node][node+this.numOfNodesPerSide] = weight;
+            //this.adjacencyMatrix[node][node+this.numOfNodesPerSide] = weight;
         }
 
         if(this._bottomNodeExists(node) === true){ 
             this.adjacencyMatrix[node-this.numOfNodesPerSide][node] = weight;
-            this.adjacencyMatrix[node][node-this.numOfNodesPerSide] = weight;
+            //this.adjacencyMatrix[node][node-this.numOfNodesPerSide] = weight;
         }
     }
 

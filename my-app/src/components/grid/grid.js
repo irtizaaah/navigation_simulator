@@ -31,13 +31,23 @@ function Grid(props) {
             if(nodeIndex in props.shortestPathNodesSoFar && props.numOfVisitedNodesSoFar === props.visitedNodes.length){
                 // checks if nodes exist in shortest path nodes list after all the visited nodes have been iterated over
                 nodeClassName = "node-shortest_path";
-            }
+            } 
             else{
                 nodeClassName = "node-visited";
             }
         }
         else{
             nodeClassName = "";
+        }
+
+        if((nodeIndex in props.visitedNodesSoFar) && (nodeClassName === "node-start" || nodeClassName === "node-end" || nodeClassName === "node-weighted")){
+            // this is to catch all the nodes that have multiple states (i.e. it's an starting node AND visited Node)
+            if(nodeIndex in props.shortestPathNodesSoFar && props.numOfVisitedNodesSoFar === props.visitedNodes.length){
+                // checks if nodes exist in shortest path nodes list after all the visited nodes have been iterated over)
+                nodeClassName = nodeClassName + " node_with_icon-shortest_path";
+
+            }
+            nodeClassName = nodeClassName + " node_with_icon-visited";
         }
 
         grid.push(<Square
@@ -101,7 +111,7 @@ function Grid(props) {
             setResetedNodes = {props.setResetedNodes}
 
             editResetedNodes = {props.editResetedNodes}
-            setRemoveNodes = {props.setRemoveNodes}
+            setEditResetedNodes = {props.setEditResetedNodes}
 
             editContinuousResetedNodes = {props.editContinuousResetedNodes}
             setEditContinuousResetedNodes = {props.setEditContinuousResetedNodes}

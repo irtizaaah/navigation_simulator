@@ -18,7 +18,7 @@ function Build(props){
             buttonClassName = {props.editBlockedNodes ? "button_container-button-on" : ""}
         />
         <Button 
-            name = "Reset"
+            name = "Erase"
             handleClick = {() => {
               props.setEditResetedNodes(props.editResetedNodes ? false : true);         
               props.setEditStartNode(false);
@@ -32,7 +32,7 @@ function Build(props){
             buttonClassName = {props.editResetedNodes ? "button_container-button-on" : ""}
         />
         <Button 
-            name = "Weight"
+            name = "Traffic"
             handleClick = {() => {
               props.setEditWeightedNodes(props.editWeightedNodes ? false : true);          
               props.setEditStartNode(false);

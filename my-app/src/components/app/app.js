@@ -7,6 +7,9 @@ import {useState, useEffect} from 'react';
 
 function App() {
   // GRID UI
+  const NO_WEIGHT = 0;
+  const DEFAULT_WEIGHT = 1;
+  const ADDED_WEIGHT = 2;
   const NUM_OF_NODES_PER_SIDE = 18; // warning! CSS grid (grid.css) builds the square grid using this value (if changed, changed no. of columns there too)
   const NUM_OF_TOTAL_NODES = NUM_OF_NODES_PER_SIDE * NUM_OF_NODES_PER_SIDE; // builds a n x n grid of squares
 
@@ -64,6 +67,9 @@ function App() {
         // GRID GRAPH
         NUM_OF_TOTAL_NODES = {NUM_OF_TOTAL_NODES}
         NUM_OF_NODES_PER_SIDE = {NUM_OF_NODES_PER_SIDE}
+        DEFAULT_WEIGHT = {DEFAULT_WEIGHT}
+        ADDED_WEIGHT = {ADDED_WEIGHT}
+        NO_WEIGHT = {NO_WEIGHT}
 
         gridGraph = {gridGraph}
         setGridGraph = {setGridGraph}
@@ -128,6 +134,9 @@ function App() {
         //GRID
         NUM_OF_TOTAL_NODES = {NUM_OF_TOTAL_NODES}
         NUM_OF_NODES_PER_SIDE = {NUM_OF_NODES_PER_SIDE}
+        DEFAULT_WEIGHT = {DEFAULT_WEIGHT}
+        ADDED_WEIGHT = {ADDED_WEIGHT}
+
         gridGraph = {gridGraph}
         setGridGraph = {setGridGraph}
 

@@ -61,6 +61,9 @@ function Grid(props) {
             // GRID GRAPH
             NUM_OF_TOTAL_NODES = {props.NUM_OF_TOTAL_NODES}
             NUM_OF_NODES_PER_SIDE = {props.NUM_OF_NODES_PER_SIDE}
+            DEFAULT_WEIGHT = {props.DEFAULT_WEIGHT}
+            ADDED_WEIGHT = {props.ADDED_WEIGHT}
+            NO_WEIGHT = {props.NO_WEIGHT}
 
             gridGraph = {props.gridGraph}
             setGridGraph = {props.setGridGraph}

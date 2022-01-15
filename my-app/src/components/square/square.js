@@ -79,7 +79,7 @@ function Square(props) {
                 return newRemovedNodes; // return a copy of array instead of mutating state in order for useEffect to register state change
             });
             props.setGridGraph(()=>{
-                props.gridGraph.changeWeight(props.nodeIndex, 1);
+                props.gridGraph.changeWeight(props.nodeIndex, props.DEFAULT_WEIGHT);
                 return props.gridGraph; // since gridGraph is mutated, useEffect doesn't register setGridGraph as changing gridGraphs' state
             })
         }
@@ -91,7 +91,7 @@ function Square(props) {
                 return newWeightedNodes; // return a copy of array instead of mutating state in order for useEffect to register state change
             });
             props.setGridGraph(()=>{
-                props.gridGraph.changeWeight(props.nodeIndex, 3);
+                props.gridGraph.changeWeight(props.nodeIndex, props.ADDED_WEIGHT);
                 return props.gridGraph; // since gridGraph is mutated, useEffect doesn't register setGridGraph as changing gridGraphs' state
             })
         }
@@ -104,7 +104,7 @@ function Square(props) {
                 return newBlockedNodes; // return a copy of array instead of mutating state in order for useEffect to register state change
             });
             props.setGridGraph(()=>{
-                props.gridGraph.changeWeight(props.nodeIndex, 0);
+                props.gridGraph.changeWeight(props.nodeIndex, props.NO_WEIGHT);
                 return props.gridGraph; // since gridGraph is mutated, useEffect doesn't register setGridGraph as changing gridGraphs' state
             })
         }

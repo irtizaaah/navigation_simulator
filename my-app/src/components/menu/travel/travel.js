@@ -5,7 +5,7 @@ import React, {useEffect} from 'react';
 
 function Travel(props){
 
-    const TIME_PER_ITERATION = 125;
+    const TIME_PER_ITERATION = 1;
     useInterval(animateVisitedNodes, props.visualizeVisitedNodes ? TIME_PER_ITERATION:null);
     useInterval(animateShortestPathNodes, props.visualizeShortestPath ? TIME_PER_ITERATION:null);
     /*

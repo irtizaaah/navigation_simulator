@@ -3,6 +3,7 @@ import GridGraph from "../../algorithm/grid-graph";
 import DijkstrasAlgorithm from "../../algorithm/dijkstra-algorithm";
 import Grid from "../grid/grid";
 import Menu from "../menu/menu";
+import Navbar from "../navbar/navbar";
 import {useState, useEffect} from 'react';
 
 function App() {
@@ -63,146 +64,149 @@ function App() {
   }, [startNode, endNode, blockedNodes, weightedNodes, resetedNodes, gridGraph]) 
   return (
     <div className = "app_container">
-      <Grid 
-        // GRID GRAPH
-        NUM_OF_TOTAL_NODES = {NUM_OF_TOTAL_NODES}
-        NUM_OF_NODES_PER_SIDE = {NUM_OF_NODES_PER_SIDE}
-        DEFAULT_WEIGHT = {DEFAULT_WEIGHT}
-        ADDED_WEIGHT = {ADDED_WEIGHT}
-        NO_WEIGHT = {NO_WEIGHT}
+      <Navbar/>
+      <div className = "content_container">
+        <Menu
+          // MAPS
+          //GRID
+          NUM_OF_TOTAL_NODES = {NUM_OF_TOTAL_NODES}
+          NUM_OF_NODES_PER_SIDE = {NUM_OF_NODES_PER_SIDE}
+          DEFAULT_WEIGHT = {DEFAULT_WEIGHT}
+          ADDED_WEIGHT = {ADDED_WEIGHT}
 
-        gridGraph = {gridGraph}
-        setGridGraph = {setGridGraph}
+          gridGraph = {gridGraph}
+          setGridGraph = {setGridGraph}
 
-        // VISITED NODES
-        visitedNodes = {visitedNodes}
-        numOfVisitedNodesSoFar = {numOfVisitedNodesSoFar}
-        visitedNodesSoFar = {visitedNodesSoFar}
+          // BLOCKED NODES
+          blockedNodes = {blockedNodes}
+          setBlockedNodes = {setBlockedNodes} 
 
-        // SHORTEST PATH
-        shortestPathNodes = {shortestPathNodes}
-        numOfShortestPathNodesSoFar = {numOfShortestPathNodesSoFar}
-        shortestPathNodesSoFar = {shortestPathNodesSoFar}
+          // START NODES
+          startNode = {startNode}
+          setStartNode = {setStartNode}
 
-        // BLOCKED NODES
-        blockedNodes = {blockedNodes}
-        setBlockedNodes = {setBlockedNodes} 
+          // END NODES
+          endNode = {endNode}
+          setEndNode = {setEndNode}
 
-        editBlockedNodes = {editBlockedNodes}
-        setEditBlockedNodes = {setEditBlockedNodes}
+          // WEIGHTED NODES
+          weightedNodes = {weightedNodes}
+          setWeightedNodes = {setWeightedNodes}
 
-        editContinuousBlockedNodes = {editContinuousBlockedNodes}
-        setEditContinuousBlockedNodes = {setEditContinuousBlockedNodes}
+          // ROUTE
+          // START AND END
+          editStartNode = {editStartNode}
+          setEditStartNode = {setEditStartNode}
+          editEndNode = {editEndNode}
+          setEditEndNode = {setEditEndNode}
 
-        // START NODES
-        startNode = {startNode}
-        setStartNode = {setStartNode}
+          // BLOCKED NODES & RESETED NODES
+          editContinuousResetedNodes = {editContinuousResetedNodes}
+          setEditContinuousResetedNodes = {setEditContinuousResetedNodes}
+          editContinuousBlockedNodes = {editContinuousBlockedNodes}
+          setEditContinuousBlockedNodes = {setEditContinuousBlockedNodes}
 
-        editStartNode = {editStartNode}
-        setEditStartNode = {setEditStartNode}
+          // BUILD
+          // BLOCKED NODES
+          editBlockedNodes = {editBlockedNodes}
+          setEditBlockedNodes = {setEditBlockedNodes}
 
-        // END NODES
-        endNode = {endNode}
-        setEndNode = {setEndNode}
+          // WEIGHTED NODES
+          editWeightedNodes = {editWeightedNodes}
+          setEditWeightedNodes = {setEditWeightedNodes}
 
-        editEndNode = {editEndNode}
-        setEditEndNode = {setEditEndNode}
+          // REMOVE NODES
+          editResetedNodes = {editResetedNodes}
+          setEditResetedNodes = {setEditResetedNodes}
 
-        // WEIGHTED NODES
-        weightedNodes = {weightedNodes}
-        setWeightedNodes = {setWeightedNodes}
+          // TRAVEL
+          // VISITED NODES
+          visitedNodes = {visitedNodes}
+          numOfVisitedNodesSoFar = {numOfVisitedNodesSoFar}
+          setNumOfVisitedNodesSoFar = {setNumOfVisitedNodesSoFar}
+          visitedNodesSoFar = {visitedNodesSoFar}
+          setVisitedNodesSoFar = {setVisitedNodesSoFar}
 
-        editWeightedNodes = {editWeightedNodes}
-        setEditWeightedNodes = {setEditWeightedNodes}
+          // SHORTEST PATH
+          shortestPathNodes = {shortestPathNodes}
+          numOfShortestPathNodesSoFar = {numOfShortestPathNodesSoFar}
+          setNumOfShortestPathNodesSoFar = {setNumOfShortestPathNodesSoFar}
+          shortestPathNodesSoFar = {shortestPathNodesSoFar}
+          setShortestPathNodesSoFar = {setShortestPathNodesSoFar}
 
-        // RESET NODES
-        resetedNodes = {resetedNodes}
-        setResetedNodes = {setResetedNodes}
+          // VISUALIZE GRID
+          visualizeVisitedNodes = {visualizeVisitedNodes}
+          setVisualizeVisitedNodes = {setVisualizeVisitedNodes}
+          visualizeShortestPath = {visualizeShortestPath}
+          setVisualizeShortestPath = {setVisualizeShortestPath}
+        />
+        <Grid 
+          // GRID GRAPH
+          NUM_OF_TOTAL_NODES = {NUM_OF_TOTAL_NODES}
+          NUM_OF_NODES_PER_SIDE = {NUM_OF_NODES_PER_SIDE}
+          DEFAULT_WEIGHT = {DEFAULT_WEIGHT}
+          ADDED_WEIGHT = {ADDED_WEIGHT}
+          NO_WEIGHT = {NO_WEIGHT}
 
-        editResetedNodes = {editResetedNodes}
-        setEditResetedNodes = {setEditResetedNodes}
+          gridGraph = {gridGraph}
+          setGridGraph = {setGridGraph}
 
-        editContinuousResetedNodes = {editContinuousResetedNodes}
-        setEditContinuousResetedNodes = {setEditContinuousResetedNodes}
+          // VISITED NODES
+          visitedNodes = {visitedNodes}
+          numOfVisitedNodesSoFar = {numOfVisitedNodesSoFar}
+          visitedNodesSoFar = {visitedNodesSoFar}
 
-        // VISUALIZE VISITED AND SHORTEST PATH NODES
-        visualizeVisitedNodes = {visualizeVisitedNodes}
-        visualizeShortestPath = {visualizeShortestPath}
-      />
-      <Menu
-        // MAPS
-        //GRID
-        NUM_OF_TOTAL_NODES = {NUM_OF_TOTAL_NODES}
-        NUM_OF_NODES_PER_SIDE = {NUM_OF_NODES_PER_SIDE}
-        DEFAULT_WEIGHT = {DEFAULT_WEIGHT}
-        ADDED_WEIGHT = {ADDED_WEIGHT}
+          // SHORTEST PATH
+          shortestPathNodes = {shortestPathNodes}
+          numOfShortestPathNodesSoFar = {numOfShortestPathNodesSoFar}
+          shortestPathNodesSoFar = {shortestPathNodesSoFar}
 
-        gridGraph = {gridGraph}
-        setGridGraph = {setGridGraph}
+          // BLOCKED NODES
+          blockedNodes = {blockedNodes}
+          setBlockedNodes = {setBlockedNodes} 
 
-        // BLOCKED NODES
-        blockedNodes = {blockedNodes}
-        setBlockedNodes = {setBlockedNodes} 
+          editBlockedNodes = {editBlockedNodes}
+          setEditBlockedNodes = {setEditBlockedNodes}
 
-        // START NODES
-        startNode = {startNode}
-        setStartNode = {setStartNode}
+          editContinuousBlockedNodes = {editContinuousBlockedNodes}
+          setEditContinuousBlockedNodes = {setEditContinuousBlockedNodes}
 
-        // END NODES
-        endNode = {endNode}
-        setEndNode = {setEndNode}
+          // START NODES
+          startNode = {startNode}
+          setStartNode = {setStartNode}
 
-        // WEIGHTED NODES
-        weightedNodes = {weightedNodes}
-        setWeightedNodes = {setWeightedNodes}
+          editStartNode = {editStartNode}
+          setEditStartNode = {setEditStartNode}
 
-        // ROUTE
-        // START AND END
-        editStartNode = {editStartNode}
-        setEditStartNode = {setEditStartNode}
-        editEndNode = {editEndNode}
-        setEditEndNode = {setEditEndNode}
+          // END NODES
+          endNode = {endNode}
+          setEndNode = {setEndNode}
 
-        // BLOCKED NODES & RESETED NODES
-        editContinuousResetedNodes = {editContinuousResetedNodes}
-        setEditContinuousResetedNodes = {setEditContinuousResetedNodes}
-        editContinuousBlockedNodes = {editContinuousBlockedNodes}
-        setEditContinuousBlockedNodes = {setEditContinuousBlockedNodes}
+          editEndNode = {editEndNode}
+          setEditEndNode = {setEditEndNode}
 
-        // BUILD
-        // BLOCKED NODES
-        editBlockedNodes = {editBlockedNodes}
-        setEditBlockedNodes = {setEditBlockedNodes}
+          // WEIGHTED NODES
+          weightedNodes = {weightedNodes}
+          setWeightedNodes = {setWeightedNodes}
 
-        // WEIGHTED NODES
-        editWeightedNodes = {editWeightedNodes}
-        setEditWeightedNodes = {setEditWeightedNodes}
+          editWeightedNodes = {editWeightedNodes}
+          setEditWeightedNodes = {setEditWeightedNodes}
 
-        // REMOVE NODES
-        editResetedNodes = {editResetedNodes}
-        setEditResetedNodes = {setEditResetedNodes}
+          // RESET NODES
+          resetedNodes = {resetedNodes}
+          setResetedNodes = {setResetedNodes}
 
-        // TRAVEL
-        // VISITED NODES
-        visitedNodes = {visitedNodes}
-        numOfVisitedNodesSoFar = {numOfVisitedNodesSoFar}
-        setNumOfVisitedNodesSoFar = {setNumOfVisitedNodesSoFar}
-        visitedNodesSoFar = {visitedNodesSoFar}
-        setVisitedNodesSoFar = {setVisitedNodesSoFar}
+          editResetedNodes = {editResetedNodes}
+          setEditResetedNodes = {setEditResetedNodes}
 
-        // SHORTEST PATH
-        shortestPathNodes = {shortestPathNodes}
-        numOfShortestPathNodesSoFar = {numOfShortestPathNodesSoFar}
-        setNumOfShortestPathNodesSoFar = {setNumOfShortestPathNodesSoFar}
-        shortestPathNodesSoFar = {shortestPathNodesSoFar}
-        setShortestPathNodesSoFar = {setShortestPathNodesSoFar}
+          editContinuousResetedNodes = {editContinuousResetedNodes}
+          setEditContinuousResetedNodes = {setEditContinuousResetedNodes}
 
-        // VISUALIZE GRID
-        visualizeVisitedNodes = {visualizeVisitedNodes}
-        setVisualizeVisitedNodes = {setVisualizeVisitedNodes}
-        visualizeShortestPath = {visualizeShortestPath}
-        setVisualizeShortestPath = {setVisualizeShortestPath}
-      />
+          // VISUALIZE VISITED AND SHORTEST PATH NODES
+          visualizeVisitedNodes = {visualizeVisitedNodes}
+          visualizeShortestPath = {visualizeShortestPath}
+        />
+      </div>
     </div>
   );
 }

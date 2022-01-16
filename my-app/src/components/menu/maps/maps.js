@@ -1,5 +1,5 @@
 import "./maps.css";
-import { NONE, FRANCE, USA, CHINA, INDIA, FILLED } from "./map-data";
+import { NONE, PARIS, CHICAGO, BEIJING, DELHI, FILLED } from "./map-data";
 import Button from '../button/button';
 import GridGraph from "../../../algorithm/grid-graph";
 import {useState} from "react";
@@ -51,28 +51,28 @@ function Maps(props){
             buttonClassName = {map === "None" ? "button_container-button-on" : ""}
         />
         <Button 
-            name = {FRANCE.name}
+            name = {PARIS.name}
             handleClick = {handleClick}
-            handleClickArgument = {FRANCE}
-            buttonClassName = {map === "France" ? "button_container-button-on" : ""}
+            handleClickArgument = {PARIS}
+            buttonClassName = {map === "Paris" ? "button_container-button-on" : ""}
         />
         <Button 
-            name = {USA.name}
+            name = {CHICAGO.name}
             handleClick = {handleClick}
-            handleClickArgument = {USA}
-            buttonClassName = {map === "USA" ? "button_container-button-on" : ""}
+            handleClickArgument = {CHICAGO}
+            buttonClassName = {map === "Chicago" ? "button_container-button-on" : ""}
         />
         <Button 
-            name = {CHINA.name}
+            name = {BEIJING.name}
             handleClick = {handleClick}
-            handleClickArgument = {CHINA}
-            buttonClassName = {map === "China" ? "button_container-button-on" : ""}
+            handleClickArgument = {BEIJING}
+            buttonClassName = {map === "Beijing" ? "button_container-button-on" : ""}
         />
         <Button 
-            name = {INDIA.name}
+            name = {DELHI.name}
             handleClick = {handleClick}
-            handleClickArgument = {INDIA}
-            buttonClassName = {map === "India" ? "button_container-button-on" : ""}
+            handleClickArgument = {DELHI}
+            buttonClassName = {map === "Delhi" ? "button_container-button-on" : ""}
         />
         <Button
             name = {FILLED.name}

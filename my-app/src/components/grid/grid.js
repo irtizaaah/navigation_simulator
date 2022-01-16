@@ -41,13 +41,14 @@ function Grid(props) {
         }
 
         if((nodeIndex in props.visitedNodesSoFar) && (nodeClassName === "node-start" || nodeClassName === "node-end" || nodeClassName === "node-weighted")){
-            // this is to catch all the nodes that have multiple states (i.e. it's an starting node AND visited Node)
+            // this is to catch all the nodes that have multiple states (i.e. it's an starting node AND visited Node)  
             if(nodeIndex in props.shortestPathNodesSoFar && props.numOfVisitedNodesSoFar === props.visitedNodes.length){
                 // checks if nodes exist in shortest path nodes list after all the visited nodes have been iterated over)
                 nodeClassName = nodeClassName + " node_with_icon-shortest_path";
-
             }
-            nodeClassName = nodeClassName + " node_with_icon-visited";
+            else{
+                nodeClassName = nodeClassName + " node_with_icon-visited";
+            }
         }
 
         grid.push(<Square

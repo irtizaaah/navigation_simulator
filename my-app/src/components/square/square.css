@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items:  center;
-  border-style: dashed;
+  border-style: solid;
   border-width: 1px;
   border-color: var(--grid-edit-color);
   margin-top: -1px;
@@ -19,7 +19,7 @@
   display: flex;
   justify-content: center;
   align-items:  center;
-  border-style: dashed;
+  border-style: solid;
   border-width: 1px;
   border-color: var(--grid-color);
   margin-top: -1px;
@@ -73,7 +73,7 @@
 @keyframes visited_animation {
   0% {
     transform: scale(0.3);
-    background-color: var(--node-shortest_path-50-color);
+    background-color: var(--node-visited-50-color);
     border-radius: 100%;
   }
 
@@ -131,6 +131,7 @@
 .node-blocked {
 background-color: var(--node-blocked-color);
 }
+
 /* .node-blocked {
 background-color: var(--node-blocked-color);
 animation-name: blocked_animation;
@@ -140,8 +141,9 @@ animation-delay: 0;
 animation-direction: alternate;
 animation-iteration-count: 1;
 animation-fill-mode: forwards;
-animation-play-state: running; */
-/* }
+animation-play-state: running;
+}
+
 @keyframes blocked_animation {
   0% {
     transform: scale(0.3);
@@ -204,14 +206,6 @@ animation-play-state: running; */
   width: 1rem;
   height: 1rem;
   background-color: var(--node-end-continuous-hovered-color);
-}
-
-/* EN ROUTE NODE */
-.node-en_route{
-  border-radius: 100px;
-  width: 1rem;
-  height: 1rem;
-  background-color: var(--node-en_route-color);
 }
 
 /* WEIGHTED NODE */

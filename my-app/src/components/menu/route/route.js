@@ -8,7 +8,7 @@ function Route(props){
     return (
       <div className = "route_container">
         <Button 
-            name = "Start"
+            name = "From"
             handleClick = {() => {
               props.setEditStartNode(props.editStartNode ? false : true);            
               props.setEditEndNode(false);
@@ -24,7 +24,7 @@ function Route(props){
           buttonClassName = {props.editStartNode ? "button_container-button-on" : ""}
         />
         <Button 
-            name = "End"
+            name = "To"
             handleClick = {() => {
               props.setEditEndNode(props.editEndNode ? false : true);
               props.setEditStartNode(false);

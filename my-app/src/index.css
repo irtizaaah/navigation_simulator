@@ -1,47 +1,59 @@
 :root{
-  
-  --background-color: #f8f8f0;
-  --heading-color: #2c211a;
+  /* BODY */
+  --background-color: #ffff;
+  --heading-color: #222831;
 
-  --button-background-color: #2c211a;
-  --button-background-hovered-color: #705f58;
-  --button-background-clicked-color: #14100d;
-  --button-text-color: #ffffff;
+  --button-background-color: #f1f1f1;
+  --button-background-hovered-color: #d6d6d6;
+  --button-background-clicked-color: #FFD369;
+  --button-text-color: #222831;
   --button-on-color: #FFC60B;
-  --button-on-hover-color: #dfab00;
+  --button-background-clicked-hovered-color: #FFC60B;
 
-  --grid-edit-color: #d9dfdf;
-  --grid-border-color: #8abdbe;
-  --grid-color: #d9dfdf;
+  --button-travel-background-color: #57CC99;
+  --button-travel-background-hovered-color: #4de0a1;
+  --button-travel-background-clicked-color: #36a877;
+  --button-travel-text-color: #ffff;
+  
+  /* GRID */
+  --grid-edit-color: #57ccb8;
+  --grid-border-color: #f1f1f1;
+  --grid-color: #d8d8d8;
 
-  --node-unvisited-color:#ffffff;
-  --node-unvisited-edit-color: #f8f8f0;
-  --node-hovered-color: #e9e8e8;
+  /* NODE */
+  --node-unvisited-color:#f1f1f1;
+  --node-unvisited-edit-color: #ebebeb;
+
+  --node-hovered-color: #d8d8d8;
   --node-continuous-hovered-color: #FFC60B;
-  --node-start-color: #69e4bb;
-  --node-start-hovered-color: #aaffe3;
-  --node-start-continuous-hovered-color: #aaffe3;
+  
+  --node-start-color: #3bd2ed;
+  --node-start-hovered-color: #8beeff;
+  --node-start-continuous-hovered-color: #8beeff;
+
   --node-end-color: #ed3e3b;
   --node-end-hovered-color: #ff9f9e;
   --node-end-continuous-hovered-color: #ff9f9e;
-  --node-weighted-color: #fdb63a;
+
+  --node-weighted-color: #FFC60B;
   --node-weighted-hovered-color: #ffca6e;
-  --node-en_route-color: rgb(58, 61, 253);
   --node-continuous-hovered-color: #FFC60B;
 
-  --node-visited-50-color: #A73489;
-  --node-visited-75-color:#FF3D68;
-  --node-visited-100-color:#ff6196;
+  --node-blocked-color: #222831;
+
+  /* NODE ANIMATION*/
+  --node-visited-50-color: #218b8d;
+  --node-visited-75-color:#80ED99;
+  --node-visited-100-color:#57CC99;
 
   --node-shortest_path-50-color: #FF8B00;
   --node-shortest_path-75-color:#FEFFDB;
   --node-shortest_path-100-color:#ffe23e;
 
-  --node-blocked-color: #dfdfdf;
-  --node-blocked-50-color: #9abcd3;
-  --node-blocked-75-color:#FAD586;
-  --node-blocked-100-color:#dfdfdf;
-}
+  --node-blocked-50-color: #171a1f;
+  --node-blocked-75-color:#7791b9;
+  --node-blocked-100-color:#222831;
+} 
 
 * {    
   margin: 0;

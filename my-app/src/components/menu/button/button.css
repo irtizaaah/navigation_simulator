@@ -49,5 +49,24 @@
     background-color: var(--button-on-color);
 }
 .button_container-button-on:hover{
-    background-color: var(--button-on-hover-color);
+    background-color: var(--button-background-clicked-hovered-color);
+}
+.button-travel{
+    background-color: var(--button-travel-background-color);
+    color: var(--button-travel-text-color);
+    width: 10rem;
+    height: 3rem;
+}
+.button-travel:hover{
+    background-color: var(--button-travel-background-hovered-color);
+    color: var(--button-travel-text-color);
+    width: 10rem;
+    height: 3rem;
+}
+.button-travel:active{
+
+    background-color: var(--button-travel-background-clicked-color);
+    color: var(--button-travel-text-color);
+    width: 10rem;
+    height: 3rem;
 }

@@ -6,8 +6,8 @@ export const NONE = {
     "weightedNodes" : {}
 }
 
-export const FRANCE = {
-    "name": "France",
+export const PARIS = {
+    "name": "Paris",
     "startNode" : 19,
     "endNode" : 304,
     "blockedNodes" : {
@@ -223,8 +223,8 @@ export const FRANCE = {
     "weightedNodes" : {}
 }
 
-export const USA = {
-    "name": "USA",
+export const CHICAGO = {
+    "name": "Chicago",
     "startNode" : 38,
     "endNode" : 285,
     "blockedNodes" : {
@@ -392,8 +392,8 @@ export const USA = {
     "weightedNodes" : {}
 }
 
-export const CHINA = {
-    "name": "China",
+export const BEIJING = {
+    "name": "Beijing",
     "startNode" : 19,
     "endNode" : 304,
     "blockedNodes" : {
@@ -576,8 +576,8 @@ export const CHINA = {
     "weightedNodes" : {}
 }
 
-export const INDIA = {
-    "name": "India",
+export const DELHI = {
+    "name": "Delhi",
     "startNode" : 19,
     "endNode" : 304,
     "blockedNodes" : {

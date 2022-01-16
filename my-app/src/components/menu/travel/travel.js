@@ -1,5 +1,5 @@
 import "./travel.css";
-import Button from "../button/button";
+import Button from "../../button/button";
 import useInterval from "./use-interval";
 import React, {useEffect} from 'react';
 
@@ -47,7 +47,21 @@ function Travel(props){
             }
             return props.shortestPathNodesSoFar;
         });
+
+        calculateTravelTime(props.shortestPathNodes[props.numOfShortestPathNodesSoFar]);
     };
+
+    function calculateTravelTime(node){
+        if(props.numOfShortestPathNodesSoFar !== 0){
+            if(node in props.weightedNodes){
+                props.setTravelTime(props.travelTime + 3);
+            }
+            else{
+                props.setTravelTime(props.travelTime + 1);
+            }
+        }
+    }
+
   return (
     <div className = "travel_container">
         <h1>{props.name}</h1>

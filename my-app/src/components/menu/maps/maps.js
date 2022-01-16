@@ -1,6 +1,6 @@
 import "./maps.css";
 import { NONE, PARIS, CHICAGO, BEIJING, DELHI, FILLED } from "./map-data";
-import Button from '../button/button';
+import Button from '../../button/button';
 import GridGraph from "../../../algorithm/grid-graph";
 import {useState} from "react";
 /*

@@ -1,5 +1,5 @@
 import "./build.css"
-import Button from '../button/button';
+import Button from "../../button/button";
 function Build(props){
     return (
       <div className = "build_container">
@@ -18,7 +18,7 @@ function Build(props){
             buttonClassName = {props.editBlockedNodes ? "button_container-button-on" : ""}
         />
         <Button 
-            name = "Erase"
+            name = "Remove"
             handleClick = {() => {
               props.setEditResetedNodes(props.editResetedNodes ? false : true);         
               props.setEditStartNode(false);

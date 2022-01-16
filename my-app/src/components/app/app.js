@@ -4,13 +4,21 @@ import DijkstrasAlgorithm from "../../algorithm/dijkstra-algorithm";
 import Grid from "../grid/grid";
 import Menu from "../menu/menu";
 import Navbar from "../navbar/navbar";
+import Modal from "../modal/modal";
+import Tutorial from "../content/tutorial";
+import MoreInformation from "../content/more-information";
+import Dashboard from "../dashboard/dashboard";
 import {useState, useEffect} from 'react';
 
 function App() {
+  // NAVBAR
+  const [showTutorial, setShowTutorial] = useState(false);
+  const [showMoreInformation, setShowMoreInformation] = useState(false); // Show more information is the "for nerds" option
+
   // GRID UI
   const NO_WEIGHT = 0;
   const DEFAULT_WEIGHT = 1;
-  const ADDED_WEIGHT = 2;
+  const ADDED_WEIGHT = 3;
   const NUM_OF_NODES_PER_SIDE = 18; // warning! CSS grid (grid.css) builds the square grid using this value (if changed, changed no. of columns there too)
   const NUM_OF_TOTAL_NODES = NUM_OF_NODES_PER_SIDE * NUM_OF_NODES_PER_SIDE; // builds a n x n grid of squares
 
@@ -53,6 +61,9 @@ function App() {
   const [shortestPathNodes, setShortestPathNodes] = useState([...path.getShortestPath()]); // copy return array of shortest path
   const [visitedNodes, setVisitedNodes] = useState([...path.getVisitedNodesInOrder()]); // copy return array of all visited nodes in order
 
+  // DASHBOARD
+  const [travelTime, setTravelTime] = useState(0);
+
   useEffect(() => { // recalculate dijkstra's algorithm whenever mentioned dependencies change
     const newPath = new DijkstrasAlgorithm(gridGraph, startNode, endNode);
     setPath(()=>{
@@ -64,7 +75,24 @@ function App() {
   }, [startNode, endNode, blockedNodes, weightedNodes, resetedNodes, gridGraph]) 
   return (
     <div className = "app_container">
-      <Navbar/>
+      <Navbar
+        showTutorial = {showTutorial}
+        setShowTutorial = {setShowTutorial}
+        showMoreInformation = {showMoreInformation}
+        setShowMoreInformation = {setShowMoreInformation}
+      />
+      <Modal 
+        title = "Tutorial" 
+        content = {<Tutorial />}
+        show = {showTutorial}
+        setShow = {setShowTutorial}
+      />
+      <Modal 
+        title = "For Nerds" 
+        content = {<MoreInformation />}
+        show = {showMoreInformation}
+        setShow = {setShowMoreInformation}
+      />
       <div className = "content_container">
         <Menu
           // MAPS
@@ -139,73 +167,83 @@ function App() {
           setVisualizeVisitedNodes = {setVisualizeVisitedNodes}
           visualizeShortestPath = {visualizeShortestPath}
           setVisualizeShortestPath = {setVisualizeShortestPath}
+
+          // DASHBOARD
+          travelTime = {travelTime}
+          setTravelTime = {setTravelTime}
         />
-        <Grid 
-          // GRID GRAPH
-          NUM_OF_TOTAL_NODES = {NUM_OF_TOTAL_NODES}
-          NUM_OF_NODES_PER_SIDE = {NUM_OF_NODES_PER_SIDE}
-          DEFAULT_WEIGHT = {DEFAULT_WEIGHT}
-          ADDED_WEIGHT = {ADDED_WEIGHT}
-          NO_WEIGHT = {NO_WEIGHT}
+        <div className = "grid_and_dashboard_container">
+          <Grid 
+            // GRID GRAPH
+            NUM_OF_TOTAL_NODES = {NUM_OF_TOTAL_NODES}
+            NUM_OF_NODES_PER_SIDE = {NUM_OF_NODES_PER_SIDE}
+            DEFAULT_WEIGHT = {DEFAULT_WEIGHT}
+            ADDED_WEIGHT = {ADDED_WEIGHT}
+            NO_WEIGHT = {NO_WEIGHT}
 
-          gridGraph = {gridGraph}
-          setGridGraph = {setGridGraph}
+            gridGraph = {gridGraph}
+            setGridGraph = {setGridGraph}
 
-          // VISITED NODES
-          visitedNodes = {visitedNodes}
-          numOfVisitedNodesSoFar = {numOfVisitedNodesSoFar}
-          visitedNodesSoFar = {visitedNodesSoFar}
+            // VISITED NODES
+            visitedNodes = {visitedNodes}
+            numOfVisitedNodesSoFar = {numOfVisitedNodesSoFar}
+            visitedNodesSoFar = {visitedNodesSoFar}
 
-          // SHORTEST PATH
-          shortestPathNodes = {shortestPathNodes}
-          numOfShortestPathNodesSoFar = {numOfShortestPathNodesSoFar}
-          shortestPathNodesSoFar = {shortestPathNodesSoFar}
+            // SHORTEST PATH
+            shortestPathNodes = {shortestPathNodes}
+            numOfShortestPathNodesSoFar = {numOfShortestPathNodesSoFar}
+            shortestPathNodesSoFar = {shortestPathNodesSoFar}
 
-          // BLOCKED NODES
-          blockedNodes = {blockedNodes}
-          setBlockedNodes = {setBlockedNodes} 
+            // BLOCKED NODES
+            blockedNodes = {blockedNodes}
+            setBlockedNodes = {setBlockedNodes} 
 
-          editBlockedNodes = {editBlockedNodes}
-          setEditBlockedNodes = {setEditBlockedNodes}
+            editBlockedNodes = {editBlockedNodes}
+            setEditBlockedNodes = {setEditBlockedNodes}
 
-          editContinuousBlockedNodes = {editContinuousBlockedNodes}
-          setEditContinuousBlockedNodes = {setEditContinuousBlockedNodes}
+            editContinuousBlockedNodes = {editContinuousBlockedNodes}
+            setEditContinuousBlockedNodes = {setEditContinuousBlockedNodes}
 
-          // START NODES
-          startNode = {startNode}
-          setStartNode = {setStartNode}
+            // START NODES
+            startNode = {startNode}
+            setStartNode = {setStartNode}
 
-          editStartNode = {editStartNode}
-          setEditStartNode = {setEditStartNode}
+            editStartNode = {editStartNode}
+            setEditStartNode = {setEditStartNode}
 
-          // END NODES
-          endNode = {endNode}
-          setEndNode = {setEndNode}
+            // END NODES
+            endNode = {endNode}
+            setEndNode = {setEndNode}
 
-          editEndNode = {editEndNode}
-          setEditEndNode = {setEditEndNode}
+            editEndNode = {editEndNode}
+            setEditEndNode = {setEditEndNode}
 
-          // WEIGHTED NODES
-          weightedNodes = {weightedNodes}
-          setWeightedNodes = {setWeightedNodes}
+            // WEIGHTED NODES
+            weightedNodes = {weightedNodes}
+            setWeightedNodes = {setWeightedNodes}
 
-          editWeightedNodes = {editWeightedNodes}
-          setEditWeightedNodes = {setEditWeightedNodes}
+            editWeightedNodes = {editWeightedNodes}
+            setEditWeightedNodes = {setEditWeightedNodes}
 
-          // RESET NODES
-          resetedNodes = {resetedNodes}
-          setResetedNodes = {setResetedNodes}
+            // RESET NODES
+            resetedNodes = {resetedNodes}
+            setResetedNodes = {setResetedNodes}
 
-          editResetedNodes = {editResetedNodes}
-          setEditResetedNodes = {setEditResetedNodes}
+            editResetedNodes = {editResetedNodes}
+            setEditResetedNodes = {setEditResetedNodes}
 
-          editContinuousResetedNodes = {editContinuousResetedNodes}
-          setEditContinuousResetedNodes = {setEditContinuousResetedNodes}
+            editContinuousResetedNodes = {editContinuousResetedNodes}
+            setEditContinuousResetedNodes = {setEditContinuousResetedNodes}
 
-          // VISUALIZE VISITED AND SHORTEST PATH NODES
-          visualizeVisitedNodes = {visualizeVisitedNodes}
-          visualizeShortestPath = {visualizeShortestPath}
-        />
+            // VISUALIZE VISITED AND SHORTEST PATH NODES
+            visualizeVisitedNodes = {visualizeVisitedNodes}
+            visualizeShortestPath = {visualizeShortestPath}
+          />
+          <Dashboard 
+            travelTime = {travelTime}
+            setTravelTime = {setTravelTime}
+          />
+        </div>
       </div>
     </div>
   );

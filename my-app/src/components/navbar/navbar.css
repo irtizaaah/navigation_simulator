@@ -6,3 +6,7 @@ button{
 .navbar_container{
     margin: 3rem 0 5rem 0;
 }
+
+.navbar_container-options:hover{
+    color: var(--navbar-option-hovered-color);
+}

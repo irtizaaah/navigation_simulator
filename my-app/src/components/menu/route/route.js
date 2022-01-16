@@ -1,5 +1,5 @@
 import "./route.css"
-import Button from '../button/button';
+import Button from '../../button/button';
 /*
   Toggles need to be checked they're set to false because unlike buttons they aren't designed to 
   automatically return to false after they're clicked

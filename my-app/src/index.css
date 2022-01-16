@@ -3,6 +3,7 @@
   --background-color: #ffff;
   --heading-color: #222831;
 
+  /* BUTTON */
   --button-background-color: #f1f1f1;
   --button-background-hovered-color: #d6d6d6;
   --button-background-clicked-color: #FFD369;
@@ -14,6 +15,15 @@
   --button-travel-background-hovered-color: #4de0a1;
   --button-travel-background-clicked-color: #36a877;
   --button-travel-text-color: #ffff;
+
+  /* MODAL/NAV */
+  --modal-cross-hovered-color: #a1a1a1;
+  --navbar-option-hovered-color: #a1a1a1;
+
+  /* DASHBOARD */
+  --dashboard-key-text-color: #a1a1a1;
+  --dashboard-time-background-color: #222831;
+  --dashboard-time-text-color: #ffff;
   
   /* GRID */
   --grid-edit-color: #57ccb8;

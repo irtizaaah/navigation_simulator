@@ -7,7 +7,7 @@ import Maps from "./maps/maps";
 function Menu(props){
   return (
     <div className = "menu_container">
-        <h1>Maps</h1>
+        <h1 className = "menu_container-indent">Maps</h1>
         <Maps
           // MAPS
           //GRID
@@ -57,7 +57,7 @@ function Menu(props){
           editContinuousBlockedNodes = {props.editContinuousBlockedNodes}
           setEditContinuousBlockedNodes = {props.setEditContinuousBlockedNodes}
         />
-        <h1>Route</h1>
+        <h1 className = "menu_container-indent">Route</h1>
         <Route
           // START AND END
           editStartNode = {props.editStartNode}
@@ -80,7 +80,7 @@ function Menu(props){
           editContinuousBlockedNodes = {props.editContinuousBlockedNodes}
           setEditContinuousBlockedNodes = {props.setEditContinuousBlockedNodes}
         />
-        <h1>Build</h1>
+        <h1 className = "menu_container-indent">Build</h1>
         <Build
           // BLOCKED NODES
           editBlockedNodes = {props.editBlockedNodes}
@@ -102,15 +102,16 @@ function Menu(props){
           setEditStartNode = {props.setEditStartNode}
           setEditEndNode = {props.setEditEndNode}
         />
-        <h1>Travel</h1>
+        <h1 className = "menu_container-indent">Travel</h1>
         <Travel
+          // VISITED NODES
           visitedNodes = {props.visitedNodes}
           numOfVisitedNodesSoFar = {props.numOfVisitedNodesSoFar}
           setNumOfVisitedNodesSoFar = {props.setNumOfVisitedNodesSoFar}
           visitedNodesSoFar = {props.visitedNodesSoFar}
           setVisitedNodesSoFar = {props.setVisitedNodesSoFar}
 
-          // SHORTEST PATH
+          // SHORTEST PATH NODES
           shortestPathNodes = {props.shortestPathNodes}
           numOfShortestPathNodesSoFar = {props.numOfShortestPathNodesSoFar}
           setNumOfShortestPathNodesSoFar = {props.setNumOfShortestPathNodesSoFar}
@@ -122,6 +123,14 @@ function Menu(props){
           setVisualizeVisitedNodes = {props.setVisualizeVisitedNodes}
           visualizeShortestPath = {props.visualizeShortestPath}
           setVisualizeShortestPath = {props.setVisualizeShortestPath}
+
+          // DASHBOARD
+          travelTime = {props.travelTime}
+          setTravelTime = {props.setTravelTime}
+          
+          // WEIGHTED NODES
+          weightedNodes = {props.weightedNodes}
+          setWeightedNodes = {props.setWeightedNodes}
         />
     </div>
   );

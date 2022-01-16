@@ -4,3 +4,6 @@
 h1{
     color: var(--heading-color);
 }
+.menu_container-indent{
+    padding: 0 0 0 1rem;
+}

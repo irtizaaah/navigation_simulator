@@ -5,10 +5,12 @@ import React, {useEffect} from 'react';
 
 function Travel(props){
 
-    let timePerIteration = 150;
-    if(window.chrome !== null && window.firefox !== null){
-        timePerIteration = 50;
+    let timePerIteration = 50;
+
+    if(window.safari !== null){ // to handle safari specific issues
+        timePerIteration = 150;
     }
+
     useInterval(animateVisitedNodes, props.visualizeVisitedNodes ? timePerIteration:null);
     useInterval(animateShortestPathNodes, props.visualizeShortestPath ? timePerIteration:null);
     /*
@@ -66,7 +68,7 @@ function Travel(props){
     <div className = "travel_container">
         <h1>{props.name}</h1>
         <Button 
-            name = "Shortest Path"
+            name = "Quickest Path"
             handleClick = {() => {props.setVisualizeVisitedNodes(true)}}
             buttonClassName = {"button-travel"}
         />

@@ -32,7 +32,7 @@ function Tutorial(props){
         <p>After entering "block" or "remove" edit modes, click any square to activate the brush, hover over the desired squares to draw in them, and click any square again to deactivate the brush.</p>
         <p className = "new_line"></p>
         <p className = "heading">Step 4: Travel!</p><p className = "new_line"></p>
-        <p>Once you're happy with your map, you can click "shortest path" and watch your device visualize the shortest path.</p>
+        <p>Once you're happy with your map, you can click "Quickest path" to watch the algorithm visually figure out the fastest route to your destination.</p>
         <p className = "new_line"></p>
     </div>
   );

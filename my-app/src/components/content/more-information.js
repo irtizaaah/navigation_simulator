@@ -3,10 +3,10 @@ import "./document-formatting.css"
 function MoreInformation(props){
   return (
     <div className = "tutorial_container">
-        <p className = "new_line"></p>
-        <p className = "new_line"></p>
+        <p><br/></p>
+        <p><br/></p>
         <p>Every square in this grid is represented by a node in a graph. Every node has an edge with a weight connecting it to it's adjacent nodes. This weight represents the cost of traveling from one node to another. </p>
-        <p className = "new_line"></p>
+        <p><br/></p>
         <p>As mentioned above, this grid is represented by a graph under the hood. A graph traversal algorithm, like Dijkstra’s algorithm, can find the shortest path to every node. It does so by comparing the cumulative edge weights incurred by travelling every possible path from the starting node to every other node in order to find the path with the smallest cumulative weight. The order in which the algorithm visits these nodes is what is being visualized on the screen when you click ‘shortest path’.</p>
         <p className = "new_line"></p>
         <p>Here are the costs associated with traveling from square to square in this grid:</p>

@@ -7,7 +7,7 @@ function Travel(props){
 
     let timePerIteration = 50;
 
-    if(window.safari !== null){ // to handle safari specific issues
+    if(navigator.userAgent.toLowerCase().search('safari')> -1 && !!window.safari === true){ // to handle safari specific issues
         timePerIteration = 150;
     }
 

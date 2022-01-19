@@ -10,10 +10,10 @@
   <p align="center">
     A web app that finds the fastest route to a desired location in a user built maze-map with traffic.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>See Documentation</strong></a>
+    <a href=""><strong>See Documentation</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo (coming soon)</a>
+    <a href="">View Demo (coming soon)</a>
   </p>
 </div>
 

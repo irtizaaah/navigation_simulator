@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="" alt="Logo" width="80" height="80">
+    <img src="images/navigation-simulator-icon.jpg" alt="icon" width="80" height="80">
   </a>
 
   <h3 align="center">Navigation Simulator</h3>
@@ -50,7 +50,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <div align="center">
-  <img src="images/navigation-simulator-image.png" alt="Logo" width="864" height="472">
+  <img src="images/navigation-simulator-image.png" alt="screenshot" width="864" height="472">
 </div>
 
 There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.

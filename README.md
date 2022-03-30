@@ -9,11 +9,6 @@
 
   <p align="center">
     A web app that finds the fastest route to a desired location in a user built maze-map with traffic.
-    <br />
-    <a href=""><strong>See Documentation</strong></a>
-    <br />
-    <br />
-    <a href="">View Demo (coming soon)</a>
   </p>
 </div>
 

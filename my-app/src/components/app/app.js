@@ -73,6 +73,7 @@ function App() {
     setVisitedNodes([...newPath.getVisitedNodesInOrder()]);
 
   }, [startNode, endNode, blockedNodes, weightedNodes, resetedNodes, gridGraph]) 
+
   return (
     <div className = "app_container">
       <Navbar

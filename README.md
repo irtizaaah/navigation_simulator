@@ -1,3 +1,4 @@
+[Try Me!](https://irtizaaah.github.io/navigation-simulator/)
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">

@@ -1,4 +1,4 @@
-[Try Me!](https://irtizaaah.github.io/navigation-simulator/)
+[Try Me! (Desktop Only)](https://irtizaaah.github.io/navigation-simulator/)
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">

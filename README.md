@@ -5,7 +5,6 @@
   <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="images/navigation-simulator-icon.jpg" alt="icon" width="80" height="80">
   </a>
-
   <h3 align="center">Navigation Simulator</h3>
 
   <p align="center">
@@ -17,6 +16,7 @@
 ## About The Project
 <div align="center">
   <img src="images/navigation-simulator-image.png" alt="screenshot" width="864" height="472">
+  <img src="https://user-images.githubusercontent.com/87709993/196582657-4078d649-47bc-49c2-914f-8176f440fc26.gif" alt="demo" width="864" height="472">
 </div>
 
 ### Theory

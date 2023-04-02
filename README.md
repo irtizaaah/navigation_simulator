@@ -1,16 +1,10 @@
-[Try Me! (Desktop Only)](https://irtizaaah.github.io/navigation-simulator/)
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/navigation-simulator-icon.jpg" alt="icon" width="80" height="80">
-  </a>
-  <h3 align="center">Navigation Simulator</h3>
 
-  <p align="center">
-    A web app that finds the fastest route to a desired location in a user built maze-map with traffic.
-  </p>
-</div>
+<img src="images/navigation-simulator-icon.jpg" alt="icon" width="80" height="80">
+
+# Navigation Simulator
+[Try Me! (Desktop Only)](https://irtizaaah.github.io/navigation-simulator/)
+
+A web app that finds the fastest route to a desired location in a user built maze-map with traffic.
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project

@@ -29,9 +29,6 @@ Here are the costs associated with traveling from square to square in this grid:
 * CSS
 * HTML
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 <!-- TUTORIAL -->
 ## Tutorial
 This program will find the shortest route (by time) between any two locations in this grid -taking both distance and traffic into consideration. It's a very simplified version of how real navigation services are able to suggest you the fastest routes to your destinations.
@@ -54,4 +51,3 @@ This program will find the shortest route (by time) between any two locations in
 ### Step 4: Travel!
 * Once you're happy with your map, you can click "Quickest path" to watch the algorithm visually figure out the fastest route to your destination.
 
-<p align="right">(<a href="#top">back to top</a>)</p>

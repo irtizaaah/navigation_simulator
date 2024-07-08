@@ -2,7 +2,7 @@
 <img src="images/navigation-simulator-icon.jpg" alt="icon" width="80" height="80">
 
 # Navigation Simulator
-[Try Me! (Desktop Only)](https://irtizaaah.github.io/navigation_simulator/)
+[Try Me! (Currently Not Deplpoyed)](https://irtizaaah.github.io/navigation_simulator/)
 
 A web app that finds the fastest route to a desired location in a user built maze-map with traffic.
 
